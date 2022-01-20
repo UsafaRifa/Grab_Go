@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.AddEmployeeController">
+   <children>
+      <Text layoutX="92.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Name" />
+      <TextField fx:id="EmployeeFirstName" layoutX="165.0" layoutY="49.0" />
+      <TextField fx:id="EmployeePhoneNumber" layoutX="165.0" layoutY="101.0" />
+      <TextField fx:id="EmployeeLastName" layoutX="509.0" layoutY="49.0" />
+      <TextField fx:id="EmployeeDesignation" layoutX="165.0" layoutY="254.0" />
+      <Text layoutX="439.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name" />
+      <Text layoutX="68.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number" />
+      <TextArea fx:id="EmployeeAddress" layoutX="165.0" layoutY="160.0" prefHeight="80.0" prefWidth="200.0" />
+      <Text layoutX="87.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" />
+      <Text layoutX="76.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Designation" />
+      <Button fx:id="savebtn" layoutX="165.0" layoutY="314.0" mnemonicParsing="false" onAction="#saveEmployeeInformation" text="Save" />
+      <Button fx:id="reset" layoutX="245.0" layoutY="314.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+   </children>
+</AnchorPane>

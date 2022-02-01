@@ -6,6 +6,8 @@
 package grab.go;
 
 import DatabaseConnection.DBconnection;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -34,8 +36,10 @@ public class AddEmployeeController implements Initializable {
     @FXML
     private TextArea EmployeeAddress;
     @FXML
+    private Button savebtn;
+    @FXML
     private Button reset;
-
+    
     /**
      * Initializes the controller class.
      */
@@ -62,10 +66,6 @@ public class AddEmployeeController implements Initializable {
     
     }
 
-    @FXML
-    private void reset(ActionEvent event) {
-        
-    }
     private void insertEmployee(Employee emp)throws ClassNotFoundException, SQLException{
         
         DBconnection dbc = new DBconnection();
@@ -74,5 +74,9 @@ public class AddEmployeeController implements Initializable {
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
         System.out.println("Inserted?: "+dataInserted);
+    }
+
+    @FXML
+    private void reset(ActionEvent event) {
     }
 }

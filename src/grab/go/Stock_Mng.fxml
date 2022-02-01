@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="Stock_page" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Stock_MngController">
+   <children>
+      <AnchorPane prefHeight="144.0" prefWidth="1290.0" style="-fx-background-color: #2D287A;">
+         <children>
+            <Text fill="#fffffffa" layoutX="498.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grab &amp;Go">
+               <font>
+                  <Font name="Dubai Medium" size="65.0" />
+               </font>
+            </Text>
+            <Text fill="#ffffffa3" layoutX="603.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find it, love it, buy it!">
+               <font>
+                  <Font name="Bodoni MT Italic" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <HBox fx:id="stockHbox" layoutX="222.0" layoutY="186.0" prefHeight="460.0" prefWidth="1018.0" />
+      <JFXButton fx:id="Add_P_Stock" layoutX="58.0" layoutY="256.0" onAction="#Add_P_Stock" prefHeight="31.0" prefWidth="153.0" style="-fx-background-color: #69C8FE;" text="Add Product Stock" />
+      <JFXButton fx:id="Show_P_Stock" layoutX="58.0" layoutY="345.0" onAction="#Show_P_Stock" style="-fx-background-color: #69C8FE;" text="Show Product Stock" />
+      <JFXButton fx:id="Back_Stock" layoutX="70.0" layoutY="621.0" onAction="#Back_Stock" style="-fx-background-color: #69C8FE;" text="Back" />
+   </children>
+</AnchorPane>

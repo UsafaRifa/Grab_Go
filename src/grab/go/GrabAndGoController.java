@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
@@ -44,7 +45,7 @@ public class GrabAndGoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       
-    }    
+    }  
 
     @FXML
     private void addEmployee(ActionEvent event) throws IOException {
@@ -60,5 +61,6 @@ public class GrabAndGoController implements Initializable {
                 EmployeeHbox1.getChildren().setAll(pane);
     
     }
+
     
 }

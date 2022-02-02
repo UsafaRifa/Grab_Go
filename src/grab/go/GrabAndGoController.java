@@ -30,14 +30,17 @@ import javafx.scene.layout.HBox;
 public class GrabAndGoController implements Initializable {
 
     @FXML
-    private Button addEmployeeButton;
-    @FXML
     private Button showEmployee;
     public static HBox EmployeeHbox;
-    @FXML
     private AnchorPane GrabPage;
     @FXML
     private HBox EmployeeHbox1;
+    @FXML
+    private Button back;
+    @FXML
+    private Button add_emp;
+    @FXML
+    private AnchorPane EmployeePage;
 
     /**
      * Initializes the controller class.
@@ -47,13 +50,7 @@ public class GrabAndGoController implements Initializable {
       
     }  
 
-    @FXML
-    private void addEmployee(ActionEvent event) throws IOException {
-    
-      Parent pane=FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
-                EmployeeHbox1.getChildren().setAll(pane);
-    
-    }
+   
 
     @FXML
     private void showAll(ActionEvent event) throws IOException {
@@ -62,5 +59,20 @@ public class GrabAndGoController implements Initializable {
     
     }
 
+    @FXML
+    private void back(ActionEvent event) throws IOException {
+        
+          Parent pane=FXMLLoader.load(getClass().getResource("AdminHomePage.fxml"));
+              EmployeePage  .getChildren().setAll(pane);
+    
+    }
+
+@FXML
+    private void addEmployee(ActionEvent event) throws IOException {
+    
+      Parent pane=FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
+                EmployeeHbox1.getChildren().setAll(pane);
+    
+    }
     
 }

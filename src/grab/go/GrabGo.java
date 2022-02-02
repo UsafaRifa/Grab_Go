@@ -40,7 +40,7 @@ public class GrabGo extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root=FXMLLoader.load(getClass().getResource("GrabAndGo.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("AdminHomePage.fxml"));
         Scene scene =new Scene(root); 
         stage.setScene(scene);
         stage.show();

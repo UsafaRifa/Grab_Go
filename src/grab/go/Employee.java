@@ -5,6 +5,9 @@
  */
 package grab.go;
 
+
+import java.time.LocalDate;
+
 /**
  *
  * @author Mukaffi
@@ -16,25 +19,31 @@ public class Employee {
     String PhoneNumber;
     String Address;
     String Degisnation;
+    LocalDate DateofBirth;
+    LocalDate DateofJoining;
 
-    public Employee(String FirstName, String LasttName, String EmployeeID, String PhoneNumber, String Address, String Degisnation) {
+    public Employee(String FirstName, String LasttName, String EmployeeID, String PhoneNumber, String Address, String Degisnation,LocalDate DateofBirth,LocalDate DateofJoining) {
         this.FirstName = FirstName;
         this.LasttName = LasttName;
         this.EmployeeID = EmployeeID;
         this.PhoneNumber = PhoneNumber;
         this.Address = Address;
         this.Degisnation = Degisnation;
+        this.DateofBirth=DateofBirth;
+        this.DateofJoining=DateofJoining;
     }
 
     public Employee() {
     }
 
-    public Employee(String FirstName, String LasttName, String PhoneNumber, String Address, String Degisnation) {
+    public Employee(String FirstName, String LasttName, String PhoneNumber, String Address, String Degisnation,LocalDate DateofBirth,LocalDate DateofJoining) {
         this.FirstName = FirstName;
         this.LasttName = LasttName;
         this.PhoneNumber = PhoneNumber;
         this.Address = Address;
         this.Degisnation = Degisnation;
+        this.DateofBirth=DateofBirth;
+        this.DateofJoining=DateofJoining;
     }
     
 
@@ -72,6 +81,22 @@ public class Employee {
 
     public String getAddress() {
         return Address;
+    }
+
+    public LocalDate getDateofBirth() {
+        return DateofBirth;
+    }
+
+    public void setDateofBirth(LocalDate DateofBirth) {
+        this.DateofBirth = DateofBirth;
+    }
+
+    public LocalDate getDateofJoining() {
+        return DateofJoining;
+    }
+
+    public void setDateofJoining(LocalDate DateofJoining) {
+        this.DateofJoining = DateofJoining;
     }
 
     public void setAddress(String Address) {

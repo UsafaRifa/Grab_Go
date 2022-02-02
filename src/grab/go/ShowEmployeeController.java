@@ -10,9 +10,12 @@ import static grab.go.GrabAndGoController.EmployeeHbox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,6 +60,10 @@ public class ShowEmployeeController implements Initializable {
      static ObservableList<Employee> Emplist=FXCollections.observableArrayList();
     @FXML
     private AnchorPane tableanc;
+    @FXML
+    private TableColumn<Employee, LocalDate> dateofBirthCol;
+    @FXML
+    private TableColumn<Employee, LocalDate> DateofJoiningCol;
 
     /**
      * Initializes the controller class.
@@ -75,7 +82,9 @@ public class ShowEmployeeController implements Initializable {
         Firstnamecol.setCellValueFactory(new PropertyValueFactory<Employee,String>("FirstName"));
         LastnameCol.setCellValueFactory(new PropertyValueFactory<Employee,String>("LasttName"));        
         phoneNumberCol.setCellValueFactory(new PropertyValueFactory<Employee,String>("PhoneNumber"));
+        dateofBirthCol.setCellValueFactory(new PropertyValueFactory<Employee,LocalDate>("DateofBirth"));
         AddressCol.setCellValueFactory(new PropertyValueFactory<Employee,String>("Address"));
+        DateofJoiningCol.setCellValueFactory(new PropertyValueFactory<Employee,LocalDate>("DateofJoining"));
         designationCol.setCellValueFactory(new PropertyValueFactory<Employee,String>("Degisnation"));
         
         EmployeeTable.setItems(Emplist);
@@ -98,7 +107,13 @@ public class ShowEmployeeController implements Initializable {
         String phone=rs.getString("PhoneNumber");
         String address=rs.getString("EmpAddress");
         String designation=rs.getString("Designation");
-        Employee emp =new Employee(Fname,Lname,EmpID,phone,address,designation);
+        Date dob=rs.getDate("DateofBirth");
+        Date doj=rs.getDate("DateofJoining");
+        
+      LocalDate ld_dob=LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(dob) );
+      LocalDate ld_doj=LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(doj) );
+        
+        Employee emp =new Employee(Fname,Lname,EmpID,phone,address,designation,ld_dob,ld_doj);
         empList.add(emp);
          
         }
@@ -119,7 +134,9 @@ public class ShowEmployeeController implements Initializable {
           empn.setFirstName(dn.FirstName);
           empn.setLasttName(dn.LasttName);
           empn.setPhoneNumber(dn.PhoneNumber);
+          empn.setDateofBirth(dn.DateofBirth);
           empn.setAddress(dn.Address);
+          empn.setDateofJoining(dn.DateofJoining);
           empn.setDegisnation(dn.Degisnation);
           
           

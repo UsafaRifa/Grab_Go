@@ -8,14 +8,16 @@
 
 <AnchorPane id="AnchorPane" fx:id="tableanc" prefHeight="456.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.ShowEmployeeController">
    <children>
-      <TableView fx:id="EmployeeTable" prefHeight="430.0" prefWidth="1018.0">
+      <TableView fx:id="EmployeeTable" layoutY="-1.0" prefHeight="431.0" prefWidth="1021.0">
          <columns>
-            <TableColumn fx:id="EmployeeIDCol" prefWidth="124.0" text="Employee ID" />
-            <TableColumn fx:id="Firstnamecol" prefWidth="182.0" text="First Name" />
-            <TableColumn fx:id="LastnameCol" prefWidth="121.0" text="Last Name " />
-            <TableColumn fx:id="phoneNumberCol" prefWidth="181.0" text="Phone Number " />
-            <TableColumn fx:id="AddressCol" prefWidth="193.0" text="Address  " />
-            <TableColumn fx:id="designationCol" prefWidth="217.0" text="Designation " />
+            <TableColumn fx:id="EmployeeIDCol" prefWidth="103.0" text="Employee ID" />
+            <TableColumn fx:id="Firstnamecol" prefWidth="120.0" text="First Name" />
+            <TableColumn fx:id="LastnameCol" prefWidth="116.0" text="Last Name " />
+            <TableColumn fx:id="phoneNumberCol" prefWidth="147.0" text="Phone Number " />
+            <TableColumn fx:id="dateofBirthCol" minWidth="0.0" prefWidth="128.0" text="Date Of Birth" />
+            <TableColumn fx:id="AddressCol" prefWidth="158.0" text="Address  " />
+            <TableColumn fx:id="DateofJoiningCol" prefWidth="124.0" text="Date of Joining" />
+            <TableColumn fx:id="designationCol" prefWidth="124.0" text="Designation " />
          </columns>
       </TableView>
       <Button fx:id="DeleteButton" layoutX="942.0" layoutY="430.0" mnemonicParsing="false" onAction="#DeleteonAction" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: red;" text="Delete" textFill="WHITE">

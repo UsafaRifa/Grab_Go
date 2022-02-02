@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="430.0" prefWidth="1018.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="grab.go.Show_ProductStockController">
+   <children>
+      <TableView layoutY="-1.0" prefHeight="430.0" prefWidth="831.0">
+        <columns>
+          <TableColumn fx:id="Stock_ProductName" prefWidth="270.0" text="Product Name" />
+          <TableColumn fx:id="StockProduct_Quantity" minWidth="0.0" prefWidth="279.0" text="Product Quantity" />
+            <TableColumn fx:id="Stock_Upcoming" prefWidth="281.0" text="Upcoming Quantity" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="StockUpdate" layoutX="866.0" layoutY="113.0" onAction="#StockUpdate" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: green;" text="Update" />
+      <JFXButton fx:id="StockDelete" layoutX="866.0" layoutY="172.0" onAction="#StockDelete" prefHeight="31.0" prefWidth="119.0" style="-fx-background-color: red;" text="Delete" />
+   </children>
+</AnchorPane>

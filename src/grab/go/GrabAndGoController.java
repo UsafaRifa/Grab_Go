@@ -67,12 +67,17 @@ public class GrabAndGoController implements Initializable {
     
     }
 
-@FXML
     private void addEmployee(ActionEvent event) throws IOException {
     
       Parent pane=FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
                 EmployeeHbox1.getChildren().setAll(pane);
     
+    }
+
+    @FXML
+    private void add_emp(ActionEvent event) throws IOException {
+        Parent pane=FXMLLoader.load(getClass().getResource("AddEmployee.fxml"));
+                EmployeeHbox1.getChildren().setAll(pane);
     }
     
 }

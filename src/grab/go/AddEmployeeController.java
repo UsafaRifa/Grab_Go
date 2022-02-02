@@ -6,6 +6,7 @@
 package grab.go;
 
 import DatabaseConnection.DBconnection;
+
 import Exceptions.NullValueException;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
@@ -54,7 +55,7 @@ public class AddEmployeeController implements Initializable {
     private JFXTextField EmployeeDesignation;
     @FXML
     private JFXTextField EmployeeLastName;
-
+  
     /**
      * Initializes the controller class.
      */
@@ -145,6 +146,7 @@ public class AddEmployeeController implements Initializable {
         return true;
     }
 
+
     @FXML
     private void saveEmployeeInformation(ActionEvent event) throws ClassNotFoundException, SQLException {
         if (validateFields() && isNumeric(EmployeePhoneNumber.getText()) && validatePnum() ) {
@@ -164,7 +166,7 @@ public class AddEmployeeController implements Initializable {
     }
 
     private void insertEmployee(Employee emp) throws ClassNotFoundException, SQLException {
-
+      
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
         String query = "insert into Employee(FirstName, LastName,PhoneNumber,DateofBirth,EmpAddress,DateofJoining,Designation) values('" + emp.FirstName + "','" + emp.LasttName + "','" + emp.PhoneNumber + "','" + emp.DateofBirth + "','" + emp.Address + "','" + emp.DateofJoining + "','" + emp.Degisnation + "')";
@@ -178,5 +180,4 @@ public class AddEmployeeController implements Initializable {
             alert.showAndWait();
         }
     }
-
 }

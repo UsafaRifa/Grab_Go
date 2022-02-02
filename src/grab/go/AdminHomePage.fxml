@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="homePage" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.AdminHomePageController">
+   <children>
+      <AnchorPane prefHeight="144.0" prefWidth="1290.0" style="-fx-background-color: #2D287A;">
+         <children>
+            <Text fill="#fffffffa" layoutX="498.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grab &amp;Go">
+               <font>
+                  <Font name="Dubai Medium" size="65.0" />
+               </font>
+            </Text>
+            <Text fill="#ffffffa3" layoutX="603.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Find it, love it, buy it!">
+               <font>
+                  <Font name="Bodoni MT Italic" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="stock_mng" fitHeight="200.0" fitWidth="200.0" layoutX="358.0" layoutY="427.0" onMouseClicked="#stock_mng" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/stock_management%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="emp_mang" fitHeight="200.0" fitWidth="200.0" layoutX="336.0" layoutY="160.0" onMouseClicked="#emp_mang" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Employee.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cus_mng" fitHeight="200.0" fitWidth="200.0" layoutX="740.0" layoutY="171.0" onMouseClicked="#cus_mng" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/Customer.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pro_mng" fitHeight="200.0" fitWidth="200.0" layoutX="752.0" layoutY="409.0" onMouseClicked="#pro_mng" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/product-management-21-1146849.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="333.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Employee Management" wrappingWidth="250.13673350214958">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="727.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Management">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="783.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Management">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="337.0" layoutY="641.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Management">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

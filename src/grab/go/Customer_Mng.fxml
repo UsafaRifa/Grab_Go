@@ -22,7 +22,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="Add_Customer" layoutX="65.0" layoutY="248.0" onAction="#Add_Customer" style="-fx-background-color: #69C8FE;" text="Add Customer Info" />
+      <JFXButton fx:id="Add_Customer" layoutX="65.0" layoutY="248.0" onAction="#Add_Customer" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #69C8FE;" text="Add Customer Info" />
       <JFXButton fx:id="All_Customer" layoutX="65.0" layoutY="329.0" onAction="#All_Customer" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: #69C8FE;" text="All Customer" />
       <JFXButton fx:id="Back" layoutX="73.0" layoutY="621.0" onAction="#Back" style="-fx-background-color: #69C8FE;" text="Back" />
       <HBox fx:id="hbox_customer" layoutX="230.0" layoutY="192.0" prefHeight="460.0" prefWidth="1018.0" />

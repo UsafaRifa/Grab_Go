@@ -20,21 +20,21 @@ public class Customer {
     String CustomerAddress;
     String CustomerEmail;
     String CustomerPhoneNumber;
-    String CustomerPassword;
+    String MembershipType;
+    String Credit;
 
-    public Customer(String CustomerID, String CustomerName, String CustomerAddress, String CustomerEmail, String CustomerPhoneNumber, String CustomerPassword) {
+    public Customer(String CustomerID, String CustomerName, String CustomerAddress, String CustomerEmail, String CustomerPhoneNumber, String MembershipType, String Credit) {
         this.CustomerID = CustomerID;
         this.CustomerName = CustomerName;
         this.CustomerAddress = CustomerAddress;
         this.CustomerEmail = CustomerEmail;
         this.CustomerPhoneNumber = CustomerPhoneNumber;
-        this.CustomerPassword = CustomerPassword;
+        this.MembershipType = MembershipType;
+        this.Credit = Credit;
     }
 
     public Customer() {
     }
-    
-    
 
     public String getCustomerID() {
         return CustomerID;
@@ -76,13 +76,23 @@ public class Customer {
         this.CustomerPhoneNumber = CustomerPhoneNumber;
     }
 
-    public String getCustomerPassword() {
-        return CustomerPassword;
+    public String getMembershipType() {
+        return MembershipType;
     }
 
-    public void setCustomerPassword(String CustomerPassword) {
-        this.CustomerPassword = CustomerPassword;
+    public void setMembershipType(String MembershipType) {
+        this.MembershipType = MembershipType;
     }
+
+    public String getCredit() {
+        return Credit;
+    }
+
+    public void setCredit(String Credit) {
+        this.Credit = Credit;
+    }
+
+
     
     
    public String toString() {

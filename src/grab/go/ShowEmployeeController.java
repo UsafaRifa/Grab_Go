@@ -122,7 +122,7 @@ public class ShowEmployeeController implements Initializable {
     
     
     
-    }
+    } 
     public static Employee empn = new Employee();
 
     @FXML
@@ -149,7 +149,7 @@ public class ShowEmployeeController implements Initializable {
     
     }
     
-      public  void deleteDonor(ObservableList<Employee> selectedEmployee) throws SQLException, ClassNotFoundException {
+      public  void deleteEmployee(ObservableList<Employee> selectedEmployee) throws SQLException, ClassNotFoundException {
 
          DBconnection dbc =new DBconnection();
           dbc.connectToDB();
@@ -168,7 +168,7 @@ public class ShowEmployeeController implements Initializable {
       ObservableList<Employee> selectedEmployee=FXCollections.observableArrayList();
         selectedEmployee=EmployeeTable.getSelectionModel().getSelectedItems();
       
-          deleteDonor(selectedEmployee);
+          deleteEmployee(selectedEmployee);
         Emplist.removeAll(selectedEmployee);
     
     }

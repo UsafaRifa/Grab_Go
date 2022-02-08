@@ -16,10 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author FUJITSU
- */
+
 public class DBconnection {
     private  Statement stmt = null;
     private Connection connection;
@@ -28,7 +25,7 @@ public class DBconnection {
         System.out.println("DB connecting..............");
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");   //p@ssword13
         //Iammad
-      
+      //code 
         String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=Iammad;" + "databaseName=GrabandGo;";
       
         connection = DriverManager.getConnection(connectionUrl);

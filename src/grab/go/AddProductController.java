@@ -67,11 +67,10 @@ public class AddProductController implements Initializable {
         
        String productId= Pro_id.getText() ;
          String productName= Pro_name.getText() ; 
-           String productPrice= Price.getText() ;  
-           
+           String shelf=Shelf_No.getValue();
              LocalDate mfg =  MFG.getValue();
             LocalDate exp = Expire.getValue();
-            String shelf=Shelf_No.getValue();
+           String productPrice= Price.getText() ;  
             String stock=Ava_Stock.getText();
             System.out.println(stock);
             
@@ -87,7 +86,7 @@ public class AddProductController implements Initializable {
       
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
-        String query = "insert into Products(ProductID, ProductName,ShelfNo,MFG,Expire,UnitPrice,Stock) values('" + pd.Product_Id + "','" + pd.Product_Name+ "','" + pd.Shelf_no + "','" + pd.MFG_Date + "','" + pd.Exp_Date + "','" + pd.Unit_Price+ "','" + pd.Available_Stock + "')";
+        String query = "insert into Products(ProductID,ProductName,ShelfNo,MFG,Expire,UnitPrice,Stock ) values('" + pd.Product_Id + "','" + pd.Product_Name+ "','" + pd.Shelf_no + "','" + pd.MFG_Date + "','" + pd.Exp_Date + "','" + pd.Unit_Price+ "','" + pd.Available_Stock + "')";
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
         if(dataInserted)
@@ -108,7 +107,7 @@ public class AddProductController implements Initializable {
 
 /* ProductID int ,
 	ProductName  varchar(50),
-	ShelfNo varchar(50),
+	ProductName  varchar(50),
 	MFG Date,
 	Expire DATE,
 	UnitPrice float(24),

@@ -7,8 +7,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="grab.go.AddProductController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.AddProductController">
    <children>
       <JFXTextField fx:id="Pro_id" layoutX="97.0" layoutY="86.0" promptText="Product Id" />
       <JFXTextField fx:id="Pro_name" layoutX="97.0" layoutY="215.0" promptText="Product Name" />
@@ -17,7 +16,7 @@
       <JFXDatePicker fx:id="Expire" layoutX="445.0" layoutY="317.0" promptText="Expire Date" />
       <JFXTextField fx:id="Price" layoutX="766.0" layoutY="215.0" promptText="Unit Price" />
       <JFXCheckBox fx:id="Ava_Stock" layoutX="97.0" layoutY="322.0" prefHeight="21.0" prefWidth="169.0" text="Available Stocks" />
-      <Button fx:id="Save_pro" layoutX="123.0" layoutY="396.0" mnemonicParsing="false" onAction="#Save_pro" prefHeight="31.0" prefWidth="95.0" text="Save" />
-      <Button fx:id="Reset_Pro" layoutX="256.0" layoutY="396.0" mnemonicParsing="false" onAction="#Reset_Pro" prefHeight="31.0" prefWidth="95.0" text="Reset" />
+      <Button fx:id="Save_pro" layoutX="123.0" layoutY="396.0" mnemonicParsing="false" onAction="#Save_pro" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #69C8FE;" text="Save" />
+      <Button fx:id="Reset_Pro" layoutX="256.0" layoutY="396.0" mnemonicParsing="false" onAction="#Reset_Pro" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #69C8FE;" text="Reset" />
    </children>
 </AnchorPane>

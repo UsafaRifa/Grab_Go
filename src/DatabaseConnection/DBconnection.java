@@ -26,9 +26,9 @@ public class DBconnection {
     
     public void connectToDB() throws ClassNotFoundException, SQLException{
         System.out.println("DB connecting..............");
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");   //p@ssword13
       
-        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=p@ssword13;" + "databaseName=GrabandGo;";
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=Iammad;" + "databaseName=GrabandGo;";
       
         connection = DriverManager.getConnection(connectionUrl);
         System.out.println("Connected database successfully.........");

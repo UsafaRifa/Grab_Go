@@ -7,11 +7,14 @@ package grab.go;
 
 import DatabaseConnection.DBconnection;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,19 +37,26 @@ public class Add_CustomerController implements Initializable {
     private JFXTextField email;
     @FXML
     private JFXTextField phone;
-    @FXML
-    private JFXPasswordField cus_pass;
+    
     @FXML
     private JFXButton save_cus_info;
     @FXML
     private JFXButton reset_cus_info;
+    @FXML
+    private JFXComboBox<String> MembershipType;
+
+          ObservableList<String> typeall = FXCollections.observableArrayList(
+                  "Gold", "Silver","Platinum"
+        );
+    @FXML
+    private JFXTextField Credit_cus;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        MembershipType.setItems(typeall);
         
         
         // TODO
@@ -62,18 +72,20 @@ public class Add_CustomerController implements Initializable {
        String CustomerAddress= cus_add.getText() ; 
        String CustomerEmail= email.getText() ; 
        String CustomerPhone= phone.getText() ; 
-       String CustomerPassword=cus_pass.getText() ; 
+       String Membershiptype=MembershipType.getValue(); 
+       String Creditcus=Credit_cus.getText(); 
             
             
            
      
-       Customer cd=new Customer( CustomerId,CustomerName,CustomerAddress, CustomerEmail,CustomerPhone, CustomerPassword);
+       Customer cd=new Customer( CustomerId,CustomerName,CustomerAddress, CustomerEmail,CustomerPhone, Membershiptype,Creditcus);
         System.out.println(cd);
-        insertCustomer(cd);
+       insertCustomer(cd);
     }
 
     @FXML
     private void reset_cus_info(ActionEvent event) {
+   
     }
 
     private void insertCustomer(Customer cd) throws ClassNotFoundException, SQLException {
@@ -81,7 +93,7 @@ public class Add_CustomerController implements Initializable {
         
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
-        String query = "insert into Customer (CustomerId, CustomerName,CustomerAddress,CustomerEmail,CustomerPhone,CustomerPassword) values('" + cd.CustomerID+ "','" + cd.CustomerName+ "','" + cd.CustomerAddress + "','" + cd.CustomerEmail + "','" + cd.CustomerPhoneNumber + "','" + cd.CustomerPassword+ "')";
+        String query = "insert into Customer (CustomerId, CustomerName,CustomerAddress,CustomerEmail,CustomerPhone,MembershipType,CustomerCredit) values('" + cd.CustomerID+ "','" + cd.CustomerName+ "','" + cd.CustomerAddress + "','" + cd.CustomerEmail + "','" + cd.CustomerPhoneNumber + "','" + cd.MembershipType+ "','" + cd.Credit+ "')";
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
         if(dataInserted)

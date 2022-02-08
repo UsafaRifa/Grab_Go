@@ -14,11 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
+
 public class Show_CustomerController implements Initializable {
 
     @FXML

@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -36,9 +37,7 @@ public class AddProductController implements Initializable {
     @FXML
     private JFXComboBox<String> Shelf_No;
           ObservableList<String> ShelfAll = FXCollections.observableArrayList(
-                  "Block A",
-                  "Block B",
-                  "Block C"
+                  "Block A","Block B","Block C","Block D","Block E"
         );
     @FXML
     private JFXDatePicker MFG;
@@ -59,6 +58,8 @@ public class AddProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Shelf_No.setItems(ShelfAll);
+        
+         
         // TODO
     }    
 
@@ -70,8 +71,14 @@ public class AddProductController implements Initializable {
            String shelf=Shelf_No.getValue();
              LocalDate mfg =  MFG.getValue();
             LocalDate exp = Expire.getValue();
-           String productPrice= Price.getText() ;  
-            String stock=Ava_Stock.getText();
+           String productPrice= Price.getText() ;
+           String stock;
+            if(Ava_Stock.isSelected()){
+             stock= "Available";
+            } else {
+                stock= "Not Available";
+                }
+          
             System.out.println(stock);
             
      

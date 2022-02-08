@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 /**
  * FXML Controller class
@@ -31,11 +32,11 @@ public class Show_CustomerController implements Initializable {
     @FXML
     private TableColumn<?, ?> Cus_phone;
     @FXML
-    private TableColumn<?, ?> Cus_Pass;
-    @FXML
     private JFXButton cus_update;
     @FXML
     private JFXButton cus_dlt;
+    @FXML
+    private TableView<?> Customertable;
 
     /**
      * Initializes the controller class.

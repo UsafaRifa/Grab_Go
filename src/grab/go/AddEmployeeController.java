@@ -65,8 +65,8 @@ public class AddEmployeeController implements Initializable {
         
          NumberValidator numValidator=new NumberValidator();
         EmployeePhoneNumber.getValidators().add(numValidator);
-       numValidator.setMessage("add only 11 digits of your phone number");
-       EmployeePhoneNumber.focusedProperty().addListener(new ChangeListener<Boolean>(){
+        numValidator.setMessage("add only 11 digits of your phone number");
+        EmployeePhoneNumber.focusedProperty().addListener(new ChangeListener<Boolean>(){
             @Override
             public void changed(ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) {
                 if(!t1){
@@ -84,7 +84,7 @@ public class AddEmployeeController implements Initializable {
        EmployeeFirstName.getValidators().get(0).setMessage("Name Should be contain only Alphabets");
        EmployeeLastName.setValidators(validate);
        EmployeeLastName.getValidators().get(0).setMessage("Name Should be contain only Alphabets");
-        EmployeeFirstName.focusedProperty().addListener(new ChangeListener<Boolean>(){
+       EmployeeFirstName.focusedProperty().addListener(new ChangeListener<Boolean>(){
             @Override
             public void changed(ObservableValue<? extends Boolean> ov, Boolean t, Boolean t1) {
                 if(!t1){
@@ -161,6 +161,7 @@ public class AddEmployeeController implements Initializable {
             Employee emp = new Employee(Fname, Lname, phone, Address, Des, dob, doJoining);
             insertEmployee(emp);
             System.out.println(emp);
+            reset();
 
         }
     }

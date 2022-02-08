@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Add_CustomerController">
    <children>
-      <JFXTextField fx:id="cus_id" layoutX="124.0" layoutY="82.0" promptText="Customer ID" />
-      <JFXTextField fx:id="cus_name" layoutX="124.0" layoutY="177.0" prefHeight="31.0" prefWidth="169.0" promptText="Customer Name" />
-      <JFXTextField fx:id="cus_add" layoutX="124.0" layoutY="275.0" prefHeight="31.0" prefWidth="169.0" promptText="Address" />
-      <JFXTextField fx:id="email" layoutX="551.0" layoutY="89.0" promptText="Email" />
-      <JFXTextField fx:id="phone" layoutX="551.0" layoutY="193.0" promptText=" Phone Number" />
-      <JFXPasswordField fx:id="cus_pass" layoutX="551.0" layoutY="291.0" promptText="Password" />
-      <JFXButton fx:id="save_cus_info" layoutX="124.0" layoutY="380.0" onAction="#save_cus_info" style="-fx-background-color: #69C8FE;" text="Save" />
-      <JFXButton fx:id="reset_cus_info" layoutX="265.0" layoutY="380.0" onAction="#reset_cus_info" style="-fx-background-color: #69C8FE;" text="Reset" />
+      <JFXTextField fx:id="cus_id" labelFloat="true" layoutX="124.0" layoutY="82.0" prefHeight="25.0" prefWidth="169.0" promptText="Customer ID" />
+      <JFXTextField fx:id="cus_name" layoutX="124.0" layoutY="175.0" prefHeight="31.0" prefWidth="169.0" promptText="Customer Name" />
+      <JFXTextField fx:id="cus_add" labelFloat="true" layoutX="124.0" layoutY="275.0" prefHeight="31.0" prefWidth="169.0" promptText="Address" />
+      <JFXTextField fx:id="email" labelFloat="true" layoutX="551.0" layoutY="82.0" prefHeight="25.0" prefWidth="169.0" promptText="Email" />
+      <JFXTextField fx:id="phone" labelFloat="true" layoutX="551.0" layoutY="178.0" prefHeight="25.0" prefWidth="169.0" promptText=" Phone Number" />
+      <JFXButton fx:id="save_cus_info" layoutX="406.0" layoutY="380.0" onAction="#save_cus_info" style="-fx-background-color: #69C8FE;" text="Save" />
+      <JFXButton fx:id="reset_cus_info" layoutX="509.0" layoutY="380.0" onAction="#reset_cus_info" style="-fx-background-color: #69C8FE;" text="Reset" />
+      <JFXComboBox fx:id="MembershipType" layoutX="800.0" layoutY="133.0" prefHeight="25.0" prefWidth="135.0" promptText="Membership Type" />
+      <JFXTextField fx:id="Credit_cus" labelFloat="true" layoutX="554.0" layoutY="278.0" prefHeight="25.0" prefWidth="169.0" promptText="Credit" />
    </children>
 </AnchorPane>

@@ -14,12 +14,12 @@ import java.time.LocalDate;
 public class product {
     
     String Product_Id;
-       String     Product_Name;
-            String Shelf_no;
-           LocalDate  MFG_Date;
-           LocalDate Exp_Date;
-            String Unit_Price;
-             String Available_Stock;
+    String Product_Name;
+    String Shelf_no;
+    LocalDate MFG_Date;
+    LocalDate Exp_Date;
+    String Unit_Price;
+    String Available_Stock;
 
     public product() {
         
@@ -99,7 +99,7 @@ public class product {
              
 
      public String toString() {
-        return "product{" + "Product_Id=" + Product_Id + ", Product_Name=" +  Product_Name + ", MFG_Date=" + MFG_Date+ ", Exp_Date=" + Exp_Date+ '}';
+        return "product{" + "Product_Id=" + Product_Id + ", Product_Name=" +  Product_Name + ", MFG_Date=" + MFG_Date+ ", Available_Stock=" + Available_Stock+ ", Exp_Date=" + Exp_Date+ '}';
     }
     
 }

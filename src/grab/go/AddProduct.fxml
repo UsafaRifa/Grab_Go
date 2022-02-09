@@ -12,11 +12,11 @@
       <JFXTextField fx:id="Pro_id" labelFloat="true" layoutX="97.0" layoutY="86.0" promptText="Product Id" />
       <JFXTextField fx:id="Pro_name" labelFloat="true" layoutX="97.0" layoutY="215.0" promptText="Product Name" />
       <JFXComboBox fx:id="Shelf_No" labelFloat="true" layoutX="445.0" layoutY="95.0" prefHeight="31.0" prefWidth="169.0" promptText="Shelf No" />
-      <JFXDatePicker fx:id="MFG" layoutX="445.0" layoutY="199.0" overLay="true" prefHeight="31.0" prefWidth="205.0" promptText="MFG Date" />
       <JFXDatePicker fx:id="Expire" layoutX="445.0" layoutY="317.0" promptText="Expire Date" />
       <JFXTextField fx:id="Price" labelFloat="true" layoutX="766.0" layoutY="215.0" promptText="Unit Price" />
       <JFXCheckBox fx:id="Ava_Stock" layoutX="97.0" layoutY="322.0" prefHeight="21.0" prefWidth="169.0" text="Available Stocks" />
       <Button fx:id="Save_pro" layoutX="123.0" layoutY="396.0" mnemonicParsing="false" onAction="#Save_pro" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #69C8FE;" text="Save" />
       <Button fx:id="Reset_Pro" layoutX="256.0" layoutY="396.0" mnemonicParsing="false" onAction="#Reset_Pro" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #69C8FE;" text="Reset" />
+      <JFXDatePicker fx:id="mfg" layoutX="444.0" layoutY="205.0" promptText="MFG Date" />
    </children>
 </AnchorPane>

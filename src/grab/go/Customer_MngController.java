@@ -17,11 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
+
 public class Customer_MngController implements Initializable {
 
     @FXML

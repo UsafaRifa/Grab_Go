@@ -22,11 +22,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
-/**
- * FXML Controller class
- *
- * @author Mukaffi
- */
+
 public class GrabAndGoController implements Initializable {
 
     @FXML

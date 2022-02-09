@@ -6,14 +6,26 @@
 package grab.go;
 
 import DatabaseConnection.DBconnection;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +51,6 @@ public class AddProductController implements Initializable {
           ObservableList<String> ShelfAll = FXCollections.observableArrayList(
                   "Block A","Block B","Block C","Block D","Block E"
         );
-    @FXML
     private JFXDatePicker MFG;
     @FXML
     private JFXDatePicker Expire;
@@ -51,6 +62,8 @@ public class AddProductController implements Initializable {
     private Button Save_pro;
     @FXML
     private Button Reset_Pro;
+    @FXML
+    private JFXDatePicker mfg;
 
     /**
      * Initializes the controller class.
@@ -64,12 +77,12 @@ public class AddProductController implements Initializable {
     }    
 
     @FXML
-    private void Save_pro(ActionEvent event) throws ClassNotFoundException, SQLException {
+    private void Save_pro(ActionEvent event) throws ClassNotFoundException, SQLException, WriterException, IOException {
         
        String productId= Pro_id.getText() ;
          String productName= Pro_name.getText() ; 
            String shelf=Shelf_No.getValue();
-             LocalDate mfg =  MFG.getValue();
+             LocalDate mfg1 =  mfg.getValue();
             LocalDate exp = Expire.getValue();
            String productPrice= Price.getText() ;
            String stock;
@@ -82,10 +95,10 @@ public class AddProductController implements Initializable {
             System.out.println(stock);
             
      
-       product pd=new product( productId,productName,shelf, mfg,exp,productPrice,stock );
+       product pd=new product( productId,productName,shelf, mfg1,exp,productPrice,stock );
         System.out.println(pd);
         insertProduct(pd);
-       
+        QrCodegenarates(pd);
         
     }
     
@@ -105,7 +118,21 @@ public class AddProductController implements Initializable {
         }
     }
     
+    
+    public void  QrCodegenarates(product pd) throws WriterException, UnsupportedEncodingException, IOException{
+        String qrCodeData = pd.Product_Id;
+            String filePath = "Qr codes\\"+pd.Product_Id+"and "+pd.Product_Name+".png";
+            String charset = "UTF-8"; // 
+            Map < EncodeHintType, ErrorCorrectionLevel > hintMap = new HashMap < EncodeHintType, ErrorCorrectionLevel > ();
+            hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+            BitMatrix matrix = new MultiFormatWriter().encode(
+                new String(qrCodeData.getBytes(charset), charset),
+                BarcodeFormat.QR_CODE, 200, 200, hintMap);
+            MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath
+                .lastIndexOf('.') + 1), new File(filePath));
+            System.out.println("QR Code image created successfully!");
 
+}
     @FXML
     private void Reset_Pro(ActionEvent event) {
     }

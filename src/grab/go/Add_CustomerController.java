@@ -20,11 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 
-/**
- * FXML Controller class
- *
- * @author Asus
- */
+
 public class Add_CustomerController implements Initializable {
 
     @FXML

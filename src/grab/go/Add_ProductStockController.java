@@ -65,7 +65,7 @@ public class Add_ProductStockController implements Initializable {
     private void insertProduct(Stock st) throws ClassNotFoundException, SQLException {
          DBconnection dbc = new DBconnection();
         dbc.connectToDB();
-        String query = "insert into Stock(Product_name,Product_Upcoming,Product_Quantity) values('" + st.ProductName + "','" + st.ProductUpcomingQuantity+ "','" + st.ProductQuantity + "')";
+        String query = "insert into Stock(Product_name,Product_Quantity,Product_Upcoming) values('" + st.ProductName + "','" + st.ProductQuantity+ "','" + st.ProductUpcomingQuantity+ "')";
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
         if(dataInserted)

@@ -6,18 +6,12 @@ public class Stock {
     
     
     String ProductName;
-    String ProductUpcomingQuantity;
+   
     String ProductQuantity;
+     String ProductUpcomingQuantity;
 
     public Stock() {
     }
-
-    public Stock(String ProductName, String ProductUpcomingQuantity, String ProductQuantity) {
-        this.ProductName = ProductName;
-        this.ProductUpcomingQuantity = ProductUpcomingQuantity;
-        this.ProductQuantity = ProductQuantity;
-    }
-    
 
     public String getProductName() {
         return ProductName;
@@ -25,6 +19,14 @@ public class Stock {
 
     public void setProductName(String ProductName) {
         this.ProductName = ProductName;
+    }
+
+    public String getProductQuantity() {
+        return ProductQuantity;
+    }
+
+    public void setProductQuantity(String ProductQuantity) {
+        this.ProductQuantity = ProductQuantity;
     }
 
     public String getProductUpcomingQuantity() {
@@ -35,14 +37,12 @@ public class Stock {
         this.ProductUpcomingQuantity = ProductUpcomingQuantity;
     }
 
-    public String getProductQuantity() {
-        return ProductQuantity;
+    public Stock(String ProductName, String ProductQuantity, String ProductUpcomingQuantity) {
+        this.ProductName = ProductName;
+        this.ProductQuantity = ProductQuantity;
+        this.ProductUpcomingQuantity = ProductUpcomingQuantity;
     }
 
-    public void setProductQuantity(String ProductQuantity) {
-        this.ProductQuantity = ProductQuantity;
-    }
-    
-            
+   
     
 }

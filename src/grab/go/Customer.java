@@ -33,6 +33,13 @@ public class Customer {
         this.Credit = Credit;
     }
 
+    public Customer(String CustomerID, String CustomerName, String CustomerPhoneNumber, String MembershipType) {
+        this.CustomerID = CustomerID;
+        this.CustomerName = CustomerName;
+        this.CustomerPhoneNumber = CustomerPhoneNumber;
+        this.MembershipType = MembershipType;
+    }
+
     public Customer() {
     }
 

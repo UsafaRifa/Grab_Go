@@ -148,10 +148,3 @@ public class AddProductController implements Initializable {
     
 }
 
-/* ProductID int ,
-	ProductName  varchar(50),
-	ProductName  varchar(50),
-	MFG Date,
-	Expire DATE,
-	UnitPrice float(24),
-	Stock varchar(100)*/

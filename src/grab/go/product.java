@@ -26,7 +26,15 @@ public class product {
         
         
     }
-             
+
+    public product(String Product_Id, String Product_Name, String Unit_Price) {
+        this.Product_Id = Product_Id;
+        this.Product_Name = Product_Name;
+        this.Unit_Price = Unit_Price;
+    }
+
+   
+              
 
     
              

@@ -13,7 +13,7 @@
       <JFXTextField fx:id="Price" labelFloat="true" layoutX="560.0" layoutY="326.0" prefHeight="25.0" prefWidth="236.0" promptText="Unit Price" />
       <Button fx:id="Update_pro" layoutX="393.0" layoutY="409.0" mnemonicParsing="false" onAction="#Update_productOnAction" prefHeight="37.0" prefWidth="116.0" style="-fx-background-color: #69C8FE;" text="Save" />
       <JFXTextField fx:id="Shelf_No" labelFloat="true" layoutX="560.0" layoutY="147.0" prefHeight="31.0" prefWidth="236.0" promptText="Shelf Numer" />
-      <JFXTextField fx:id="Shelf_row" layoutX="560.0" layoutY="199.0" prefHeight="31.0" prefWidth="236.0" promptText="Shelf Row" />
-      <JFXTextField fx:id="Shelf_col" layoutX="560.0" layoutY="251.0" prefHeight="31.0" prefWidth="236.0" promptText="Shelf Column" />
+      <JFXTextField fx:id="Shelf_row" labelFloat="true" layoutX="560.0" layoutY="199.0" prefHeight="31.0" prefWidth="236.0" promptText="Shelf Row" />
+      <JFXTextField fx:id="Shelf_col" labelFloat="true" layoutX="560.0" layoutY="251.0" prefHeight="31.0" prefWidth="236.0" promptText="Shelf Column" />
    </children>
 </AnchorPane>

@@ -102,7 +102,7 @@ public class Update_ProductController implements Initializable {
     private void Update_productOnAction(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
-      String query = "UPDATE Shelf SET Block_shelfNo='"+Shelf_No.getText()+"', Shelf_row="+Shelf_row.getText()+", Shelf_col="+Shelf_col.getText()+" WHERE ProductID='"+Pro_id.getText()+"'";
+      String query = "UPDATE Shelf SET Block_shelfNo='"+Shelf_No.getText()+"', Shelf_row="+Shelf_row.getText()+", Shelf_col="+Shelf_col.getText()+", Add_status='No Pending' WHERE ProductID='"+Pro_id.getText()+"'";
     
        System.out.println(query);
         //ResultSet dataInserted = dbc.queryToDB(query);

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,9 +22,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -114,7 +119,57 @@ public class Shelf_MngController implements Initializable {
     
 
     @FXML
-    private void AddQtyOnAction(ActionEvent event) {
+    private void AddQtyOnAction(ActionEvent event) throws ClassNotFoundException, SQLException, IOException {
+        
+        ObservableList<ShelfManage> selectedItem=FXCollections.observableArrayList();
+        selectedItem=Shelf_mngTable.getSelectionModel().getSelectedItems();
+         for (ShelfManage shelf_mng : selectedItem) {
+          sm.setProduct_Id(shelf_mng.Product_Id);
+          sm.setProduct_Name(shelf_mng.Product_Name);
+          sm.setBlock_no(shelf_mng.Block_no);
+          sm.setShelf_no(shelf_mng.Shelf_no);
+          sm.setShelf_row(shelf_mng.Shelf_row);
+          sm.setShelf_col(shelf_mng.Shelf_col);
+          sm.setOnShelf_quantity(shelf_mng.OnShelf_quantity);
+          sm.setStock_Con(shelf_mng.Stock_Con);
+          sm.setAdd_sts(shelf_mng.Add_sts);
+        }
+        
+        
+         TextInputDialog ti=new TextInputDialog(); 
+          ti.setTitle("Add Quantity");
+          ti.getDialogPane().setContentText("New Added Amount(Total quantity must be less then 100): ");
+          Optional<String> res=ti.showAndWait();
+          TextField in=ti.getEditor();
+         if(!(in.getText().isEmpty()))
+         {
+             int qty= Integer.parseInt(in.getText());
+             int overflowCheck= qty+sm.getOnShelf_quantity();
+             if(overflowCheck <=100){
+                 String que="UPDATE Shelf SET Add_status='"+in.getText().toString()+",Pending' WHERE ProductID='"+sm.getProduct_Id()+"'";
+                        System.out.println(que); 
+                        DBconnection dbc = new DBconnection();
+                         dbc.connectToDB();
+                         boolean dataIn = dbc.insertDataToDB(que);
+                         if(dataIn){
+                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                             alert.setTitle("Successful");
+                            alert.setHeaderText("Updated");
+                            alert.showAndWait();
+                            
+                            Parent pane = FXMLLoader.load(getClass().getResource("Shelf_Mng.fxml"));
+                             tableAnc.getChildren().setAll(pane);
+                         }
+             }else{
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error!");
+                    alert.setHeaderText("Excess to store");
+                    alert.showAndWait();
+             }
+             
+         }
+                  
+                    
     }
     
     public static ShelfManage sm= new ShelfManage();
@@ -148,6 +203,7 @@ public class Shelf_MngController implements Initializable {
     }
 
     private void updateItemInfo(ObservableList<ShelfManage> selectedItem) {
+        
         
     }
 }

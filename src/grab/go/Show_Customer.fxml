@@ -14,8 +14,8 @@
             <TableColumn fx:id="cus_address" minWidth="128.0" prefWidth="128.0" text="Address" />
             <TableColumn fx:id="Cus_email" minWidth="139.0" prefWidth="139.0" text="Email" />
             <TableColumn fx:id="Cus_phone" minWidth="147.0" prefWidth="149.0" text="Phone Number" />
-            <TableColumn prefWidth="115.0" text="Membership Type" />
-            <TableColumn prefWidth="97.0" text="Credit" />
+            <TableColumn fx:id="membershipType" prefWidth="115.0" text="Membership Type" />
+            <TableColumn fx:id="credit" prefWidth="97.0" text="Credit" />
         </columns>
       </TableView>
       <JFXButton fx:id="cus_update" layoutX="922.0" layoutY="95.0" onAction="#cus_update" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: green;" text="Update" textFill="WHITE" />

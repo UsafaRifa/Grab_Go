@@ -40,6 +40,10 @@ public class product {
         this.Available_Stock = Available_Stock;
     }
 
+    product(String ProductID, String ProductName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getProduct_Id() {
         return Product_Id;
     }

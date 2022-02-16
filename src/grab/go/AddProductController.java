@@ -103,9 +103,17 @@ public class AddProductController implements Initializable {
             
      
        product pd=new product( productId,productName,shelf, mfg1,exp,productPrice,stock );
-        System.out.println(pd);
+       
+       System.out.println(pd);
         insertProduct(pd);
         QrCodegenarates(pd);
+       Pro_id.clear();
+       Pro_name.clear();
+       Shelf_No.setItems(ShelfAll);
+       MFG.setValue(null);
+       Expire.setValue(null);
+       Price.clear();
+       Ava_Stock.setSelected(false);
         
     }
     
@@ -168,9 +176,7 @@ public class AddProductController implements Initializable {
     Expire.setValue(null);
     Price.clear();
     Ava_Stock.setSelected(false);
-    
-    
-    }
+     }
     
 }
 

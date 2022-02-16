@@ -148,7 +148,7 @@ CustomerCredit varchar(50)
        
        
         for ( Customer cus:selectedCustomer) {
-            String query = "DELETE FROM Products WHERE ProductID='"+cus.CustomerID+"'";
+            String query = "DELETE FROM Customer WHERE CustomerId ='"+cus.CustomerID+"'";
             dbc.DeleteDataToDB(query);
             System.out.println(query);
         

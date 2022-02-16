@@ -26,7 +26,15 @@ public class product {
         
         
     }
-             
+
+    public product(String Product_Id, String Product_Name, String Unit_Price) {
+        this.Product_Id = Product_Id;
+        this.Product_Name = Product_Name;
+        this.Unit_Price = Unit_Price;
+    }
+
+   
+              
 
     
              
@@ -38,6 +46,10 @@ public class product {
         this.Exp_Date = Exp_Date;
         this.Unit_Price = Unit_Price;
         this.Available_Stock = Available_Stock;
+    }
+
+    product(String ProductID, String ProductName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getProduct_Id() {

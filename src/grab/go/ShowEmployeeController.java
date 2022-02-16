@@ -7,6 +7,7 @@ package grab.go;
 
 import DatabaseConnection.DBconnection;
 import static grab.go.GrabAndGoController.EmployeeHbox;
+import static java.awt.SystemColor.text;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -70,6 +71,7 @@ public class ShowEmployeeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+     
         EmployeeTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         try {
             Emplist=getAllEmployee();
@@ -142,10 +144,10 @@ public class ShowEmployeeController implements Initializable {
           
         }
        
-      Parent pane=FXMLLoader.load(getClass().getResource("UpdateEmployeeInfo.fxml"));
-             tableanc.getChildren().setAll(pane);
+            Parent pane=FXMLLoader.load(getClass().getResource("UpdateEmployeeInfo.fxml"));
+            tableanc.getChildren().setAll(pane);
      
- 
+                
     
     }
     

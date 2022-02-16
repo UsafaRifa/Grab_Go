@@ -106,9 +106,9 @@ public class Show_ProductStockController implements Initializable {
         ResultSet rs= dbc.queryToDB(query);
         
         while(rs.next()){
-        String Product_name=rs.getString("Product_name");
+         String Product_name=rs.getString("Product_name");
          String Product_Quantity=rs.getString("Product_Quantity");
-          String Product_Upcoming=rs.getString("Product_Upcoming");
+         String Product_Upcoming=rs.getString("Product_Upcoming");
         
         
        

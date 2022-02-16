@@ -26,7 +26,7 @@ public class DBconnection {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");   //p@ssword13
         //Iammad
       //code 
-        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=Iammad;" + "databaseName=GrabandGo;";
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=usafarifa;" + "databaseName=GrabandGo;";
       
         connection = DriverManager.getConnection(connectionUrl);
         System.out.println("Connected database successfully.........");

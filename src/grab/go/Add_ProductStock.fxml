@@ -2,31 +2,39 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="grab.go.Add_ProductStockController">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Add_ProductStockController">
    <children>
       <AnchorPane layoutX="162.0" layoutY="14.0" prefHeight="411.0" prefWidth="827.0">
          <children>
-            <JFXTextField fx:id="Stock_Product" layoutX="103.0" layoutY="56.0" prefHeight="31.0" prefWidth="169.0" promptText="Product Name">
+            <JFXTextField fx:id="Stock_Product" layoutX="283.0" layoutY="36.0" prefHeight="31.0" prefWidth="169.0" promptText="Product Name">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="Product_Quantity" layoutX="103.0" layoutY="175.0" prefHeight="31.0" prefWidth="169.0" promptText="Product Quantity">
+            <JFXTextField fx:id="Product_Quantity" layoutX="19.0" layoutY="156.0" prefHeight="31.0" prefWidth="169.0" promptText="Product Quantity">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="Upcoming_Quantity" layoutX="397.0" layoutY="56.0" prefHeight="31.0" prefWidth="169.0" promptText="Upcoming Quantity">
+            <JFXTextField fx:id="Upcoming_Quantity" layoutX="283.0" layoutY="156.0" prefHeight="31.0" prefWidth="169.0" promptText="Upcoming Quantity">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXTextField>
-            <JFXButton fx:id="Save_ProductStock" layoutX="54.0" layoutY="350.0" onAction="#Save_ProductStock" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #69C8FE;" text="Save" />
-            <JFXButton fx:id="ResetProductStock" layoutX="233.0" layoutY="350.0" onAction="#ResetProductStock" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #69C8FE;" text="Reset" />
+            <JFXButton fx:id="Save_ProductStock" layoutX="19.0" layoutY="350.0" onAction="#Save_ProductStock" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #69C8FE;" text="Save" />
+            <JFXButton fx:id="ResetProductStock" layoutX="200.0" layoutY="350.0" onAction="#ResetProductStock" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #69C8FE;" text="Reset" />
+            <JFXTextField fx:id="ProductStock_Id" layoutX="19.0" layoutY="44.0" prefHeight="31.0" prefWidth="169.0" promptText="Product ID" />
+            <TableView fx:id="StockProductTable" layoutX="570.0" layoutY="12.0" prefHeight="335.0" prefWidth="241.0">
+              <columns>
+                <TableColumn fx:id="SproductID" prefWidth="75.0" text="Product Id" />
+                <TableColumn fx:id="StockProName" prefWidth="165.0" text="Product Name" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </children>

@@ -14,6 +14,8 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import static grab.go.QrCodeReadController.readQRCode;
 import static grab.go.Show_ProductController.productList;
@@ -36,11 +38,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
@@ -98,12 +103,22 @@ public class BillgenaratePageController implements Initializable {
     private JFXTextField cusname;
     @FXML
     private JFXTextField CustomerPhone;
+       @FXML
+    private JFXTextField invoiceNo;
     @FXML
+    private JFXDatePicker invoiceDate;
+ @FXML
     private JFXTextField cusmember;
-   
+    @FXML
+    private JFXTextArea billArea;
+    @FXML
+    private Button a;
+    TextArea text = new TextArea();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      
+          text.setPrefRowCount(100);
+        text.setPrefColumnCount(20);
+        invoiceDate.setValue(LocalDate.now());
         BillProductID.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductID")); 
         BillProductName.setCellValueFactory(new PropertyValueFactory<Bill,String>("Product_Name"));
         BillQuantity.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductQuantity"));        
@@ -112,7 +127,7 @@ public class BillgenaratePageController implements Initializable {
         productTotal.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductTotal"));
         BillUnitPrice.setCellValueFactory(new PropertyValueFactory<Bill, String>("ProductUnitprice"));
     
-       Billtable.setItems(productList);
+        Billtable.setItems(productList);
        
     }
 
@@ -124,7 +139,40 @@ public class BillgenaratePageController implements Initializable {
                  BillPage.getChildren().setAll(pane);
     
     }
+   private void print(Node node) {
+    System.out.println("Creating a printer job...");
+
+    PrinterJob job = PrinterJob.createPrinterJob();
+    if (job != null) {
+      System.out.println(job.jobStatusProperty().asString());
+
+      boolean printed = job.printPage(node);
+      if (printed) {
+        job.endJob();
+      } else {
+        System.out.println("Printing failed.");
+      }
+    } else {
+      System.out.println("Could not create a printer job.");
+    }
+  }
+    public void setArea()
+    {   text.setText("=======================================================\n");
+        text.setText(text.getText()+"         \t\t\t\t     Welcome To Grab and Go                 \n"
+                + "Invoice No:"+invoiceNo.getText()+" \t\t\t\t\t\t\t\t\t\t  Date: "+invoiceDate.getValue()+"\n");
+        text.setText(text.getText()+"*******************************************************\n");
+        int c=1;
+        for (Bill bl : productList) { text.setText(text.getText()+"\n Item No:"+c+" \n productID: "+bl.ProductID+"\n");
+             text.setText(text.getText()+"*******************************************************\n");
+        c++;
+        
+        }
+       
+        
+       
     
+    
+    }
     public void TotalBill()
     {
     Double Totalbill = 0.00 ;
@@ -293,6 +341,13 @@ public class BillgenaratePageController implements Initializable {
 
     @FXML
     private void PrintBill(ActionEvent event) {
+            setArea();
+    
+    }
+
+    @FXML
+    private void aaa(ActionEvent event) {
+         print(text);
     }
   
     

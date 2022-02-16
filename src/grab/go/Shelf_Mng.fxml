@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="1020.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="grab.go.Shelf_MngController">
+<AnchorPane id="AnchorPane" fx:id="tableAnc" blendMode="MULTIPLY" prefHeight="526.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Shelf_MngController">
    <children>
-      <TableView prefHeight="456.0" prefWidth="928.0">
+      <TableView fx:id="Shelf_mngTable" layoutX="2.0" layoutY="56.0" prefHeight="456.0" prefWidth="919.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="Column X" />
+          <TableColumn fx:id="Shelf_productID" prefWidth="94.0" text="ProductID" />
+          <TableColumn fx:id="Shelf_productName" prefWidth="150.0" text="Product Name" />
+            <TableColumn fx:id="Shelf_blockNum" prefWidth="87.0" text="Block Number" />
+            <TableColumn fx:id="Shelf_shelfNum" prefWidth="88.0" text="Shelf Number" />
+            <TableColumn fx:id="Shelf_row" prefWidth="72.0" text="Shelf Row" />
+            <TableColumn fx:id="Shelf_col" prefWidth="85.0" text="Shelf Column" />
+            <TableColumn fx:id="Shelf_productQty" prefWidth="105.0" text="Quantity On Shelf" />
+            <TableColumn fx:id="Shelf_stockCon" prefWidth="97.0" text="Stock Condition" />
+            <TableColumn fx:id="Shelf_addSts" prefWidth="142.0" text="Add Status" />
         </columns>
       </TableView>
+      <Button layoutX="930.0" layoutY="189.0" mnemonicParsing="false" onAction="#AddQtyOnAction" prefHeight="31.0" prefWidth="88.0" text="Add Quantity" />
+      <JFXComboBox labelFloat="true" layoutX="461.0" layoutY="21.0" prefHeight="25.0" prefWidth="180.0" promptText="Select Search key" />
+      <JFXTextField layoutX="641.0" layoutY="21.0" prefHeight="25.0" prefWidth="289.0" promptText="Add value that you want to search" />
+      <ImageView accessibleRole="BUTTON" blendMode="MULTIPLY" fitHeight="32.0" fitWidth="31.0" layoutX="947.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Images/icons8-search.gif" />
+         </image>
+      </ImageView>
+      <Button layoutX="930.0" layoutY="248.0" mnemonicParsing="false" onAction="#updateProductOnAction" prefHeight="31.0" prefWidth="88.0" text="Update Info" />
    </children>
 </AnchorPane>

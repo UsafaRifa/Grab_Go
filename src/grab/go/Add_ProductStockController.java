@@ -47,23 +47,41 @@ public class Add_ProductStockController implements Initializable {
     @FXML
     private JFXButton ResetProductStock;
     @FXML
-    private TableView<product> ProductTable;
-    @FXML
-    private TableColumn<product, String> ProductIdCol;
-    @FXML
-    private TableColumn<product, String> ProductName;
-    @FXML
     private JFXTextField ProductStock_Id;
+    @FXML
+    private TableView<product> StockProductTable;
+    @FXML
+    private TableColumn<product, String> SproductID;
+    @FXML
+    private TableColumn<product, String> StockProName;
     
-   
+    static ObservableList<product> productList=FXCollections.observableArrayList();
 
-    /**
-     * Initializes the controller class.
+    /*
+     
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-       
+        
+        
+        StockProductTable.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+      
+        try {
+            productList=getAllProduct();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Add_ProductStockController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Add_ProductStockController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+         SproductID.setCellValueFactory(new PropertyValueFactory<product, String>("Product_Id")); 
+       StockProName.setCellValueFactory(new PropertyValueFactory<product, String>("Product_Name"));
+        
+          StockProductTable.setItems(productList);
+        
+     
     } 
 
    
@@ -73,16 +91,16 @@ public class Add_ProductStockController implements Initializable {
     
     @FXML
     private void Save_ProductStock(ActionEvent event) throws ClassNotFoundException, SQLException {
-        
-       /*  String  StockProduct=  Stock_Product.getText() ;
+         String StockID=ProductStock_Id.getText();
+         String StockProduct=  Stock_Product.getText();
          String  ProductQuantity=  Product_Quantity.getText() ;  
          String UpcomingQuantity= Upcoming_Quantity.getText() ;
            
      
-       Stock st=new Stock( StockProduct, ProductQuantity,UpcomingQuantity );
+       Stock st=new Stock(StockID,StockProduct, ProductQuantity,UpcomingQuantity );
         System.out.println(st);
         insertProduct(st);
-         */ 
+         
          
     }
 
@@ -94,10 +112,10 @@ public class Add_ProductStockController implements Initializable {
         
         
         
-        /*
+        
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
-        String query = "insert into Stock(Product_name,Product_Quantity,Product_Upcoming) values('" + st.ProductName + "','" + st.ProductQuantity+ "','" + st.ProductUpcomingQuantity+ "')";
+        String query = "insert into Stock(Product_Id,Product_name,Product_Quantity,Product_Upcoming) values('" + st.ProductID + "','" + st.ProductName + "','" + st.ProductQuantity+ "','" + st.ProductUpcomingQuantity+ "')";
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
         if(dataInserted)
@@ -107,9 +125,56 @@ public class Add_ProductStockController implements Initializable {
             alert.setHeaderText("Stock Information  Added");
             alert.showAndWait();
         }
-        */
+        
          
     }
+
+    
+    public  ObservableList<product> getAllProduct() throws SQLException, ClassNotFoundException{
+       ObservableList<product> pdList=FXCollections.observableArrayList();
+     DBconnection dbc =new DBconnection();
+       dbc.connectToDB();
+        String query="select * from Products"; 
+         dbc.queryToDB(query);
+        ResultSet rs= dbc.queryToDB(query);
+        
+        while(rs.next()){
+        String ProductID=rs.getString("ProductID");
+        String ProductName=rs.getString("ProductName");
+        String ShelfNo=rs.getString("ShelfNo");
+        String UnitPrice=rs.getString("UnitPrice");
+        String Stock=rs.getString("Stock");
+        Date MFG=rs.getDate("MFG");
+        Date Expire=rs.getDate("Expire");
+        
+      LocalDate ld_MFG=LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(MFG) );
+      LocalDate ld_Expire=LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(Expire) );
+        
+        product pd =new product(ProductID,ProductName,ShelfNo,ld_MFG,ld_Expire,UnitPrice,Stock);
+        pdList.add(pd);
+         
+        }
+        
+       return pdList; 
+    
+  
+    
+    } 
+
+    @FXML
+    private void Add_OnAction(ActionEvent event) {
+        
+        product pd= new product();
+        
+        pd= StockProductTable.getSelectionModel().getSelectedItem();
+        
+        Stock_Product.setText(pd.Product_Name);
+         
+       ProductStock_Id.setText(pd.Product_Id);
+                
+    }
+
+  
     
     
     

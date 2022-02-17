@@ -76,16 +76,16 @@ public class Show_CustomerController implements Initializable {
          
          
           Cus_id.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerID")); 
-      Cus_name.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerName"));
+        Cus_name.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerName"));
         cus_address.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerAddress"));        
         Cus_email.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerEmail"));
         
-        Cus_phone.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerPhoneNumber"));
+         Cus_phone.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerPhoneNumber"));
          membershipType.setCellValueFactory(new PropertyValueFactory<Customer,String>("MembershipType"));
-           credit.setCellValueFactory(new PropertyValueFactory<Customer,String>("Credit"));
+         credit.setCellValueFactory(new PropertyValueFactory<Customer,String>("Credit"));
         
        Customertable.setItems(Cuslist);
-        // TODO
+       
     }   
     
     
@@ -96,15 +96,8 @@ public class Show_CustomerController implements Initializable {
         String query="select*from Customer"; 
          dbc.queryToDB(query);
         ResultSet rs= dbc.queryToDB(query);
-        /* 
-CustomerId varchar(50),
-CustomerId  varchar(50),
-CustomerAddress varchar(50),
-CustomerEmail varchar(50),
-CustomerPhone varchar(50),
-MembershipType varchar(50),
-CustomerCredit varchar(50)
- */
+        
+
         while(rs.next()){
         String CusId =rs.getString("CustomerId");
         String CusName =rs.getString("CustomerName");  
@@ -116,11 +109,11 @@ CustomerCredit varchar(50)
        
      
         Customer cus =new   Customer (CusId,CusName,CusAddress, CusEmail,CusPhone,CusMembershipType,CusCredit);
-       Cuslist.add(cus);
+       Clist.add(cus);
          
         }
         
-       return Cuslist; 
+       return Clist; 
     
   
     

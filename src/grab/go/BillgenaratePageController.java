@@ -109,18 +109,14 @@ public class BillgenaratePageController implements Initializable {
     private JFXDatePicker invoiceDate;
  @FXML
     private JFXTextField cusmember;
-    @FXML
-    private JFXTextArea billArea;
-    @FXML
-    private Button a;
     TextArea text = new TextArea();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-          text.setPrefRowCount(100);
+          text.setPrefRowCount(500);
         text.setPrefColumnCount(20);
         invoiceDate.setValue(LocalDate.now());
         BillProductID.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductID")); 
-        BillProductName.setCellValueFactory(new PropertyValueFactory<Bill,String>("Product_Name"));
+        BillProductName.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductName"));
         BillQuantity.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductQuantity"));        
         BillsubTotal.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductSubTotal"));
         ProductVat.setCellValueFactory(new PropertyValueFactory<Bill,String>("ProductVat"));
@@ -160,17 +156,22 @@ public class BillgenaratePageController implements Initializable {
     {   text.setText("=======================================================\n");
         text.setText(text.getText()+"         \t\t\t\t     Welcome To Grab and Go                 \n"
                 + "Invoice No:"+invoiceNo.getText()+" \t\t\t\t\t\t\t\t\t\t  Date: "+invoiceDate.getValue()+"\n");
-        text.setText(text.getText()+"*******************************************************\n");
+        text.setText(text.getText()+"Customer ID: "+CustoID.getText()+" \t\t\t\t\t\tCustomer Name: "+cusname.getText()+" \n");
+        text.setText(text.getText()+"Customer Phone No: "+CustomerPhone.getText()+" \t\t\tMembership Type: "+cusmember.getText()+" \n");
+        text.setText(text.getText()+" ****************************************************************************************\n");
         int c=1;
-        for (Bill bl : productList) { text.setText(text.getText()+"\n Item No:"+c+" \n productID: "+bl.ProductID+"\n");
-             text.setText(text.getText()+"*******************************************************\n");
+        for (Bill bl : productList) { text.setText(text.getText()+" Item No: "+c+" \n Product ID: "+bl.ProductID+"            \t\tProduct Name: "+bl.ProductName+" \n   \t\tUnit Price :"+bl.ProductUnitprice+"   \tQuantity: "+bl.ProductQuantity+"   \tSubTotal :"+bl.ProductSubTotal+"      \tVat :"+bl.ProductVat+"  \n      \t\t\t\t\t\t\t\t\t\t\tProduct Total :"+bl.ProductTotal+"\n");
+            text.setText(text.getText()+" ****************************************************************************************\n");
         c++;
         
         }
+        text.setText(text.getText()+" \t\t\t\t\t\t\t\t\t\t\t\t\t  Total :"+TotalBill.getText()+" \n");
        
-        
+        text.setText(text.getText()+"=======================================================\n");
+        text.setText(text.getText()+"=======================================================\n");
+        text.setText(text.getText()+"         \t\t\t\t         Please Come Again                 \n");
        
-    
+         print(text);
     
     }
     public void TotalBill()
@@ -345,10 +346,6 @@ public class BillgenaratePageController implements Initializable {
     
     }
 
-    @FXML
-    private void aaa(ActionEvent event) {
-         print(text);
-    }
   
     
 }

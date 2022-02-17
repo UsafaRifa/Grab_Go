@@ -60,7 +60,7 @@ public class Customer_MngController implements Initializable {
     private void Back(ActionEvent event) throws IOException {
         
          Parent pane=FXMLLoader.load(getClass().getResource("AdminHomePage.fxml"));
-               CustomerPage .getChildren().setAll(pane);
+               CustomerPage.getChildren().setAll(pane);
     }
     
 }

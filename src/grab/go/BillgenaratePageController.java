@@ -211,6 +211,7 @@ public class BillgenaratePageController implements Initializable {
     ProductIDbill.clear();
     ProductName.clear();
     Quantity.clear();
+    UnitPrice.clear();
     }
    
     static Stage stage = new Stage();

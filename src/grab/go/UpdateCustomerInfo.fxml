@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1018.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="grab.go.UpdateCustomerInfoController">
+   <children>
+      <JFXTextField fx:id="emp_id" editable="false" labelFloat="true" layoutX="439.0" layoutY="46.0" prefHeight="33.0" prefWidth="160.0" promptText="Customer ID" />
+      <JFXTextField fx:id="Customername" labelFloat="true" layoutX="230.0" layoutY="117.0" prefHeight="25.0" prefWidth="160.0" promptText="Customer Name" />
+      <JFXTextField fx:id="CustomerPhone" labelFloat="true" layoutX="587.0" layoutY="117.0" prefHeight="25.0" prefWidth="160.0" promptText="Customer Phone" />
+      <JFXTextField fx:id="CustomerEmail" labelFloat="true" layoutX="230.0" layoutY="200.0" prefHeight="25.0" prefWidth="160.0" promptText="Customer Email" />
+      <JFXTextField fx:id="CustomerCredit" labelFloat="true" layoutX="587.0" layoutY="200.0" prefHeight="25.0" prefWidth="160.0" promptText="Credit" />
+      <JFXTextArea fx:id="CustomerAddress" labelFloat="true" layoutX="554.0" layoutY="319.0" prefHeight="65.0" prefWidth="297.0" promptText="Customer Address" />
+      <ComboBox fx:id="CustomerMember" layoutX="218.0" layoutY="359.0" prefWidth="150.0" promptText="Membership Type" />
+      <JFXButton layoutX="420.0" layoutY="436.0" onAction="#updatecustomer" prefHeight="33.0" prefWidth="121.0" style="-fx-background-color: #69C8FE;" text="Update" />
+   </children>
+</AnchorPane>

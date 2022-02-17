@@ -6,6 +6,8 @@
 package grab.go;
 
 import DatabaseConnection.DBconnection;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import static grab.go.ShowEmployeeController.empn;
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +32,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -63,12 +66,40 @@ public class Shelf_MngController implements Initializable {
     static ObservableList<ShelfManage> Shelf_productMngList=FXCollections.observableArrayList();
     @FXML
     private AnchorPane tableAnc;
+    @FXML
+    private JFXComboBox<String> search_key;
+    ObservableList<String> allKey = FXCollections.observableArrayList(
+                  "ProductID","ProductName","Block","Stock_condition","Add_status"
+        );
+    @FXML
+    private JFXTextField search_txtField;
+    @FXML
+    private JFXTextField shelf_selection;
+    @FXML
+    private JFXComboBox<Integer> row_selection;
+    @FXML
+    private JFXComboBox<Integer> col_selection;
+    @FXML
+    private JFXComboBox<String> select_block;
+    ObservableList<String> BlockAll = FXCollections.observableArrayList(
+                  "Block A","Block B","Block C","Block D","Block E"
+        );
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        search_key.setItems(allKey);
+        search_key.setValue("ProductID");
+        select_block.setItems(BlockAll);
+        
+        search_txtField.setVisible(true);
+          shelf_selection.setVisible(false);
+          row_selection.setVisible(false);
+          col_selection.setVisible(false);
+        select_block.setVisible(false);
+        
         Shelf_mngTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
         try {
@@ -205,6 +236,105 @@ public class Shelf_MngController implements Initializable {
     private void updateItemInfo(ObservableList<ShelfManage> selectedItem) {
         
         
+    }
+
+    @FXML
+    private void searchBtnOnAction(MouseEvent event) throws ClassNotFoundException, SQLException {
+        
+        String key=search_key.getValue().toString();
+        String txt=search_txtField.getText();
+        String que;
+        if(key.equals("ProductID") || key.equals("ProductName")){
+            que="SELECT  Products.ProductID,ProductName,ShelfNo,Block_shelfNo,Shelf_row,Shelf_col,OnShelf_qty,Stock_condition,Add_status FROM Products " +
+              "LEFT JOIN Shelf on Products.ProductID=Shelf.ProductID " +"where (Products."+key+" LIKE '%"+txt+"%')";
+        }else {
+            que="SELECT  Products.ProductID,ProductName,ShelfNo,Block_shelfNo,Shelf_row,Shelf_col,OnShelf_qty,Stock_condition,Add_status FROM Products LEFT JOIN Shelf on Products.ProductID=Shelf.ProductID where ("+key+" LIKE '%"+txt+"%')";
+        }
+        
+        ObservableList<ShelfManage> selectedShelfItem = FXCollections.observableArrayList();
+        selectedShelfItem = SearchInShelf(que);
+        Shelf_mngTable.setItems(selectedShelfItem);
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       /* if(key.equals("Block")){
+            System.out.println("point");
+            String blk=select_block.getValue().toString();
+            String shlf=shelf_selection.getText();
+            int r=Integer.parseInt(row_selection.getValue().toString());
+            int c=Integer.parseInt(col_selection.getValue().toString());
+            System.out.println(r);
+            if(!(blk.isEmpty()) && !(shlf.isEmpty()) && !(row_selection.getValue().toString().isEmpty()) && !(col_selection.getValue().toString().isEmpty())){
+                String que="SELECT  Products.ProductID,ProductName,ShelfNo,Block_shelfNo,Shelf_row,Shelf_col,OnShelf_qty,Stock_condition,Add_status FROM Products "
+                    + "LEFT JOIN Shelf on Products.ProductID=Shelf.ProductID"
+                    + "where (ShelfNo='"+blk+"' AND Block_shelfNo='"+shlf+"'AND Shelf_row="+r+" AND Shelf_col="+c+")";
+            }
+            if(!(blk.isEmpty()) && !(shlf.isEmpty()) && (row_selection.getValue().toString().isEmpty()) && (col_selection.getValue().toString().isEmpty())){
+                String que="SELECT  Products.ProductID,ProductName,ShelfNo,Block_shelfNo,Shelf_row,Shelf_col,OnShelf_qty,Stock_condition,Add_status FROM Products "
+                    + "LEFT JOIN Shelf on Products.ProductID=Shelf.ProductID"
+                    + "where (ShelfNo='"+blk+"' AND Block_shelfNo='"+shlf+"')";
+            }
+            if(!(blk.isEmpty()) && (shlf.isEmpty()) && (row_selection.getValue().toString().isEmpty()) && (col_selection.getValue().toString().isEmpty())){
+                String que="SELECT  Products.ProductID,ProductName,ShelfNo,Block_shelfNo,Shelf_row,Shelf_col,OnShelf_qty,Stock_condition,Add_status FROM Products " +
+"              LEFT JOIN Shelf on Products.ProductID=Shelf.ProductID" +
+"                  where (ShelfNo='"+blk+"'))";
+                System.out.println(que);
+            }
+        }
+        */
+        
+    }
+    
+    ObservableList<ShelfManage> SearchInShelf(String que) throws SQLException, ClassNotFoundException {
+        ObservableList<ShelfManage> Productlist = FXCollections.observableArrayList();
+        DBconnection dbc = new DBconnection();
+        dbc.connectToDB();
+        System.out.println(que);
+        ResultSet rs = dbc.queryToDB(que);
+        while (rs.next()) {
+            String Product_Id = rs.getString("ProductID");
+            String Product_Name = rs.getString("ProductName");
+            String Block_no = rs.getString("ShelfNo");
+            String Shelf_no= rs.getString("Block_shelfNo");
+            int Shelf_r = rs.getInt("Shelf_row");
+            int Shelf_c = rs.getInt("Shelf_col");
+            int OnShelf_quantity = rs.getInt("OnShelf_qty");
+            String Stock_Con = rs.getString("Stock_condition");
+            String Add_sts = rs.getString("Add_status");
+
+            ShelfManage shM = new ShelfManage(Product_Id, Product_Name, Block_no, Shelf_no,Shelf_r,Shelf_c,OnShelf_quantity,Stock_Con,Add_sts);
+            Productlist.add(shM);
+
+        }
+
+        return Productlist;
+    }
+
+    @FXML
+    private void keySelectOnAction(MouseEvent event) {
+        String key=search_key.getValue().toString();
+        //String txt=search_txtField.getText();
+        if(key.equals("Block")){
+          search_txtField.setVisible(false);
+          shelf_selection.setVisible(true);
+          row_selection.setVisible(true);
+          col_selection.setVisible(true);
+          select_block.setVisible(true);
+        }
+        else{
+          search_txtField.setVisible(true);
+          shelf_selection.setVisible(false);
+          row_selection.setVisible(false);
+          col_selection.setVisible(false);
+          select_block.setVisible(false);
+        }
     }
 }
     

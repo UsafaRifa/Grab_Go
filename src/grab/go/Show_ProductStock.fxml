@@ -9,7 +9,8 @@
    <children>
       <TableView fx:id="Stock_Table" layoutY="-1.0" prefHeight="430.0" prefWidth="831.0">
         <columns>
-          <TableColumn fx:id="Stock_ProductName" prefWidth="270.0" text="Product Name" />
+            <TableColumn fx:id="Product_id" prefWidth="95.0" text="Product Id" />
+          <TableColumn fx:id="Stock_ProductName" prefWidth="250.0" text="Product Name" />
           <TableColumn fx:id="StockProduct_Quantity" minWidth="0.0" prefWidth="279.0" text="Product Quantity" />
             <TableColumn fx:id="Stock_Upcoming" prefWidth="281.0" text="Upcoming Quantity" />
         </columns>

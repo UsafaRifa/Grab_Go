@@ -26,14 +26,19 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -64,6 +69,8 @@ public class AddProductController implements Initializable {
     private Button Reset_Pro;
     @FXML
     private JFXDatePicker mfg;
+    @FXML
+    private AnchorPane AddProAnc;
 
     /**
      * Initializes the controller class.
@@ -96,25 +103,52 @@ public class AddProductController implements Initializable {
             
      
        product pd=new product( productId,productName,shelf, mfg1,exp,productPrice,stock );
-        System.out.println(pd);
+       
+       System.out.println(pd);
         insertProduct(pd);
         QrCodegenarates(pd);
+       Pro_id.clear();
+       Pro_name.clear();
+       Shelf_No.setItems(ShelfAll);
+       MFG.setValue(null);
+       Expire.setValue(null);
+       Price.clear();
+       Ava_Stock.setSelected(false);
         
     }
     
-    private void insertProduct(product pd) throws ClassNotFoundException, SQLException {
+    private void insertProduct(product pd) throws ClassNotFoundException, SQLException, IOException {
       
         DBconnection dbc = new DBconnection();
         dbc.connectToDB();
         String query = "insert into Products(ProductID,ProductName,ShelfNo,MFG,Expire,UnitPrice,Stock ) values('" + pd.Product_Id + "','" + pd.Product_Name+ "','" + pd.Shelf_no + "','" + pd.MFG_Date + "','" + pd.Exp_Date + "','" + pd.Unit_Price+ "','" + pd.Available_Stock + "')";
         System.out.println(query);
         boolean dataInserted = dbc.insertDataToDB(query);
+        System.out.println(dataInserted);
         if(dataInserted)
         {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Info");
-            alert.setHeaderText("Product Added");
-            alert.showAndWait();
+            String q="INSERT INTO Shelf(ProductID) VALUES ('"+pd.Product_Id+"')";
+            System.out.println(q);
+            boolean dataIn=dbc.insertDataToDB(q);
+            System.out.println(dataIn);
+            if(dataIn){
+                Alert a=new Alert(Alert.AlertType.CONFIRMATION);
+                    a.setHeaderText("Your Product Added to the list Successfully!");
+                    a.setContentText("Please Confirm the Store Location");
+                    
+                    ButtonType btnYes=new ButtonType("Yes");
+                    ButtonType btnCancel=new ButtonType("Cancel");
+                    a.getButtonTypes().setAll(btnYes,btnCancel);
+                    Optional<ButtonType> res=a.showAndWait();
+                    if(res.get() == btnYes){
+                        Shelf_MngController.sm.Product_Id=pd.Product_Id;
+                        Shelf_MngController.sm.Product_Name=pd.Product_Name;
+                        Shelf_MngController.sm.Block_no=pd.Shelf_no;
+                        Parent pane = FXMLLoader.load(getClass().getResource("Update_Product.fxml"));
+                        AddProAnc.getChildren().setAll(pane);
+                    }
+            }
+            
         }
     }
     
@@ -135,14 +169,14 @@ public class AddProductController implements Initializable {
 }
     @FXML
     private void Reset_Pro(ActionEvent event) {
-    }
+    Pro_id.clear();
+    Pro_name.clear();
+    Shelf_No.setItems(ShelfAll);
+    MFG.setValue(null);
+    Expire.setValue(null);
+    Price.clear();
+    Ava_Stock.setSelected(false);
+     }
     
 }
 
-/* ProductID int ,
-	ProductName  varchar(50),
-	ProductName  varchar(50),
-	MFG Date,
-	Expire DATE,
-	UnitPrice float(24),
-	Stock varchar(100)*/

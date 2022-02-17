@@ -32,6 +32,7 @@ public class DBconnection {
 
         String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=Iammad;" + "databaseName=GrabandGo;";
 
+
       
         connection = DriverManager.getConnection(connectionUrl);
         System.out.println("Connected database successfully.........");

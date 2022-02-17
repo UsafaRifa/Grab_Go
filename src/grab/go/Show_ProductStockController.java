@@ -48,6 +48,8 @@ public class Show_ProductStockController implements Initializable {
     private TableView<Stock> Stock_Table;
     
     static ObservableList<Stock> StockList=FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Stock, String> Product_id;
 
     /**
      * Initializes the controller class.
@@ -67,9 +69,8 @@ public class Show_ProductStockController implements Initializable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Show_ProductController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+      Product_id.setCellValueFactory(new PropertyValueFactory<Stock, String>("ProductID")); 
         Stock_ProductName.setCellValueFactory(new PropertyValueFactory<Stock, String>("ProductName")); 
-         
          
         StockProduct_Quantity.setCellValueFactory(new PropertyValueFactory<Stock, String>("ProductQuantity"));
          Stock_Upcoming.setCellValueFactory(new PropertyValueFactory<Stock, String>("ProductUpcomingQuantity"));
@@ -106,7 +107,10 @@ public class Show_ProductStockController implements Initializable {
         ResultSet rs= dbc.queryToDB(query);
         
         while(rs.next()){
-         String Product_name=rs.getString("Product_name");
+
+            
+           String  Product_Id=rs.getString("Product_Id");  
+        String Product_name=rs.getString("Product_name");
          String Product_Quantity=rs.getString("Product_Quantity");
          String Product_Upcoming=rs.getString("Product_Upcoming");
         
@@ -115,7 +119,7 @@ public class Show_ProductStockController implements Initializable {
       
      
         
-        Stock st =new  Stock (Product_name,Product_Quantity, Product_Upcoming);
+        Stock st =new  Stock (Product_Id,Product_name,Product_Quantity, Product_Upcoming);
         stList.add(st);
          
         }
@@ -130,7 +134,7 @@ public class Show_ProductStockController implements Initializable {
           dbc.connectToDB();
        
         for (Stock st : selectedProduct) {
-            String query = "DELETE FROM Products WHERE ProductID='"+st.ProductName+"'";
+            String query = "DELETE FROM Stock WHERE  Product_Id ='"+st.ProductID+"'";
             dbc.DeleteDataToDB(query);
             System.out.println(query);
         

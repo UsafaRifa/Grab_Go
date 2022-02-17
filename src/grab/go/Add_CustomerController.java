@@ -71,12 +71,17 @@ public class Add_CustomerController implements Initializable {
        String Membershiptype=MembershipType.getValue(); 
        String Creditcus=Credit_cus.getText(); 
             
-            
-           
      
        Customer cd=new Customer( CustomerId,CustomerName,CustomerAddress, CustomerEmail,CustomerPhone, Membershiptype,Creditcus);
         System.out.println(cd);
        insertCustomer(cd);
+         cus_id.clear();
+         cus_name.clear();
+         email.clear();
+         phone.clear();   
+         cus_add.clear();
+         MembershipType.setItems(typeall);
+         Credit_cus.clear();
     }
 
     @FXML

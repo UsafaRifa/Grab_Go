@@ -7,7 +7,9 @@ package grab.go;
 
 import DatabaseConnection.DBconnection;
 import com.jfoenix.controls.JFXButton;
+import static grab.go.ShowEmployeeController.empn;
 import static grab.go.Show_ProductController.productList;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -21,11 +23,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 
 
 public class Show_CustomerController implements Initializable {
@@ -54,6 +59,8 @@ public class Show_CustomerController implements Initializable {
     private JFXButton cus_update;
     @FXML
     private JFXButton cus_dlt;
+    @FXML
+    private AnchorPane customertableFX;
      
      
      
@@ -76,16 +83,16 @@ public class Show_CustomerController implements Initializable {
          
          
           Cus_id.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerID")); 
-      Cus_name.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerName"));
+        Cus_name.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerName"));
         cus_address.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerAddress"));        
         Cus_email.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerEmail"));
         
-        Cus_phone.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerPhoneNumber"));
+         Cus_phone.setCellValueFactory(new PropertyValueFactory<Customer,String>("CustomerPhoneNumber"));
          membershipType.setCellValueFactory(new PropertyValueFactory<Customer,String>("MembershipType"));
-           credit.setCellValueFactory(new PropertyValueFactory<Customer,String>("Credit"));
+         credit.setCellValueFactory(new PropertyValueFactory<Customer,String>("Credit"));
         
        Customertable.setItems(Cuslist);
-        // TODO
+       
     }   
     
     
@@ -96,15 +103,8 @@ public class Show_CustomerController implements Initializable {
         String query="select*from Customer"; 
          dbc.queryToDB(query);
         ResultSet rs= dbc.queryToDB(query);
-        /* 
-CustomerId varchar(50),
-CustomerId  varchar(50),
-CustomerAddress varchar(50),
-CustomerEmail varchar(50),
-CustomerPhone varchar(50),
-MembershipType varchar(50),
-CustomerCredit varchar(50)
- */
+        
+
         while(rs.next()){
         String CusId =rs.getString("CustomerId");
         String CusName =rs.getString("CustomerName");  
@@ -116,18 +116,40 @@ CustomerCredit varchar(50)
        
      
         Customer cus =new   Customer (CusId,CusName,CusAddress, CusEmail,CusPhone,CusMembershipType,CusCredit);
-       Cuslist.add(cus);
+       Clist.add(cus);
          
         }
         
-       return Cuslist; 
+       return Clist; 
     
   
     
     } 
+      public static Customer customer  = new Customer();
 
     @FXML
-    private void cus_update(ActionEvent event) {
+    private void cus_update(ActionEvent event) throws IOException {
+   ObservableList<Customer> selectedemp=FXCollections.observableArrayList();
+        selectedemp=Customertable.getSelectionModel().getSelectedItems();
+         for (Customer dn : selectedemp) {
+         customer.setCustomerID(dn.CustomerID);
+         customer.setCustomerName(dn.CustomerName);
+         customer.setCustomerPhoneNumber(dn.CustomerPhoneNumber);
+         customer.setCustomerAddress(dn.CustomerAddress);
+         customer.setCustomerEmail(dn.CustomerEmail);
+         customer.setCredit(dn.Credit);
+         customer.setMembershipType(dn.MembershipType);
+          
+        }
+       
+            Parent pane=FXMLLoader.load(getClass().getResource("UpdateCustomerInfo.fxml"));
+            customertableFX.getChildren().setAll(pane);
+     
+                
+    
+    
+    
+    
     }
 
     @FXML

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="456.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Show_CustomerController">
+<AnchorPane id="AnchorPane" fx:id="customertableFX" prefHeight="456.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grab.go.Show_CustomerController">
    <children>
       <TableView fx:id="Customertable" prefHeight="456.0" prefWidth="902.0">
         <columns>

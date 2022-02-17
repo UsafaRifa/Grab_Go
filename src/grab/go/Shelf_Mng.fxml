@@ -25,13 +25,17 @@
         </columns>
       </TableView>
       <Button layoutX="930.0" layoutY="189.0" mnemonicParsing="false" onAction="#AddQtyOnAction" prefHeight="31.0" prefWidth="88.0" text="Add Quantity" />
-      <JFXComboBox labelFloat="true" layoutX="461.0" layoutY="21.0" prefHeight="25.0" prefWidth="180.0" promptText="Select Search key" />
-      <JFXTextField layoutX="641.0" layoutY="21.0" prefHeight="25.0" prefWidth="289.0" promptText="Add value that you want to search" />
-      <ImageView accessibleRole="BUTTON" blendMode="MULTIPLY" fitHeight="32.0" fitWidth="31.0" layoutX="947.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <JFXComboBox fx:id="search_key" labelFloat="true" layoutX="392.0" layoutY="21.0" onMouseDragOver="#keySelectOnAction" onMousePressed="#keySelectOnAction" onMouseReleased="#keySelectOnAction" prefHeight="25.0" prefWidth="180.0" promptText="Select Search key" />
+      <JFXTextField fx:id="search_txtField" layoutX="574.0" layoutY="21.0" prefHeight="25.0" prefWidth="284.0" promptText="Add value that you want to search" />
+      <ImageView accessibleRole="BUTTON" blendMode="MULTIPLY" fitHeight="32.0" fitWidth="31.0" layoutX="943.0" layoutY="18.0" onDragDetected="#searchBtnOnAction" onMouseClicked="#searchBtnOnAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Images/icons8-search.gif" />
          </image>
       </ImageView>
       <Button layoutX="930.0" layoutY="248.0" mnemonicParsing="false" onAction="#updateProductOnAction" prefHeight="31.0" prefWidth="88.0" text="Update Info" />
+      <JFXTextField fx:id="shelf_selection" labelFloat="true" layoutX="649.0" layoutY="21.0" prefHeight="25.0" prefWidth="79.0" promptText="Shelf No" />
+      <JFXComboBox fx:id="row_selection" labelFloat="true" layoutX="734.0" layoutY="21.0" prefHeight="25.0" prefWidth="95.0" promptText="Select Row" />
+      <JFXComboBox fx:id="col_selection" labelFloat="true" layoutX="835.0" layoutY="21.0" promptText="Select Col" />
+      <JFXComboBox fx:id="select_block" labelFloat="true" layoutX="574.0" layoutY="21.0" prefHeight="25.0" prefWidth="66.0" promptText="Block no" />
    </children>
 </AnchorPane>

@@ -30,7 +30,8 @@ public class DBconnection {
         //Iammad
       //code 
 
-        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=usafarifa;" + "databaseName=GrabandGo;";
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;user=sa;password=Iammad;" + "databaseName=GrabandGo;";
+
 
       
         connection = DriverManager.getConnection(connectionUrl);

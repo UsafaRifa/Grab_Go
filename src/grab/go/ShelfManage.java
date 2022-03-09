@@ -16,7 +16,7 @@ public class ShelfManage {
     String Product_Name;
     String Block_no;
     String Shelf_no;
-    int Shelf_row,Shelf_col,OnShelf_quantity;
+    int Shelf_row,Shelf_col,OnShelf_quantity,addProQty;
     String Stock_Con;
     String Add_sts;
     LocalDate MFG_Date;
@@ -62,6 +62,25 @@ public class ShelfManage {
         this.OnShelf_quantity = OnShelf_quantity;
         this.Stock_Con = Stock_Con;
         this.Add_sts = Add_sts;
+    }
+
+    ShelfManage(String Product_Id, String Product_Name, String Block_no, String Shelf_no, int Shelf_row, int Shelf_col, int addProQty, String Add_sts) {
+        this.Product_Id = Product_Id;
+        this.Product_Name = Product_Name;
+        this.Block_no = Block_no;
+        this.Shelf_no = Shelf_no;
+        this.Shelf_row = Shelf_row;
+        this.Shelf_col = Shelf_col;
+        this.addProQty = addProQty;
+        this.Add_sts = Add_sts;
+    }
+
+    public int getAddProQty() {
+        return addProQty;
+    }
+
+    public void setAddProQty(int addProQty) {
+        this.addProQty = addProQty;
     }
 
     public String getProduct_Id() {

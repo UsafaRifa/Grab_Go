@@ -34,7 +34,7 @@ public class LoginPageController implements Initializable {
     @FXML
     private JFXComboBox<String> loginas;
         ObservableList<String> logtype = FXCollections.observableArrayList(
-                  "Admin","Receptionist"
+                  "Admin","Receptionist","Employee"
         );
     @FXML
     private AnchorPane LoginPage;

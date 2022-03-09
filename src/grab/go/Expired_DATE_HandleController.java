@@ -6,6 +6,7 @@
 package grab.go;
 
 import DatabaseConnection.DBconnection;
+import static grab.go.ShowEmployeeController.Emplist;
 import static grab.go.Show_ProductController.productList;
 import java.net.URL;
 import java.sql.Date;
@@ -111,21 +112,35 @@ public class Expired_DATE_HandleController implements Initializable {
         
        return pdList; 
     
-  /*    public ShelfManage(String Product_Id, String Product_Name, String Block_no, String Shelf_no, int Shelf_row, int Shelf_col, LocalDate MFG_Date, LocalDate Exp_Date) {
-        this.Product_Id = Product_Id;
-        this.Product_Name = Product_Name;
-        this.Block_no = Block_no;
-        this.Shelf_no = Shelf_no;
-        this.Shelf_row = Shelf_row;
-        this.Shelf_col = Shelf_col;
-        this.MFG_Date = MFG_Date;
-        this.Exp_Date = Exp_Date;
-    }
-*/
+
     
     } 
     @FXML
-    private void delete(ActionEvent event) {
-    }
+    private void delete(ActionEvent event) throws SQLException, ClassNotFoundException {
+   ObservableList<ShelfManage> selectedEmployee=FXCollections.observableArrayList();
+        selectedEmployee=ProductTable.getSelectionModel().getSelectedItems();
+      
+          deleteExpProduct(selectedEmployee);
+        Expire_productMngList.removeAll(selectedEmployee);
     
+    }
+      public  void deleteExpProduct(ObservableList<ShelfManage> selectedProduct) throws SQLException, ClassNotFoundException {
+
+      
+         DBconnection dbc =new DBconnection();
+          dbc.connectToDB();
+       
+        for (ShelfManage pd : selectedProduct) {
+            String query = "DELETE FROM Shelf WHERE ProductID='"+pd.Product_Id+"'";
+            dbc.DeleteDataToDB(query);
+            String query1 = "DELETE  FROM Products  WHERE ProductID='"+pd.Product_Id+"'";
+            dbc.queryToDB(query1);
+            System.out.println(query1);
+        
+        }
+            
+ 
+            
+    }
+
 }

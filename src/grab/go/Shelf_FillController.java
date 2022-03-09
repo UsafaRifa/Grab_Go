@@ -9,8 +9,11 @@ import DatabaseConnection.DBconnection;
 import com.jfoenix.controls.JFXButton;
 import static grab.go.Shelf_MngController.Shelf_productMngList;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,7 +111,7 @@ public class Shelf_FillController implements Initializable {
             addProQty= Integer.parseInt(clean);
         ShelfManage sm =new ShelfManage(ProductID,ProductName,Block_no,Block_Shelfno,row_no,col_no,addProQty,Add_sts);
         ShelfProductList.add(sm);
-            System.out.println(sm);
+           
         }
         return ShelfProductList;
     }
@@ -116,9 +119,11 @@ public class Shelf_FillController implements Initializable {
     @FXML
     private void updateStatusOnAction(MouseEvent event) throws ClassNotFoundException, SQLException {
          ObservableList<ShelfManage> selectedProduct=FXCollections.observableArrayList();
+        
         selectedProduct=Shelf_mngTable.getSelectionModel().getSelectedItems();
-      
-          updateStatus(selectedProduct);
+       String A=getAllQTY();
+        System.out.println(A);
+        updateStatus(selectedProduct);
         Shelf_productMngList.removeAll(selectedProduct);
     }
 
@@ -134,5 +139,27 @@ public class Shelf_FillController implements Initializable {
         }
     }
 
+ public  String getAllQTY() throws SQLException, ClassNotFoundException{
+       ObservableList<product> pdList=FXCollections.observableArrayList();
+     DBconnection dbc =new DBconnection();
+       dbc.connectToDB();
+        String query="select OnShelf_qty from Shelf where ProductID='P-147896'"; 
+         dbc.queryToDB(query);
+        ResultSet rs= dbc.queryToDB(query);
+       String OnShelf_qty = null;
+        while(rs.next()){
+       
+        OnShelf_qty=rs.getString("OnShelf_qty");
+        
+        
+     
+       
+         
+        }
+        
+       return OnShelf_qty; 
     
+  
+    
+    }     
 }

@@ -42,7 +42,9 @@ public class LoginPageController implements Initializable {
     @FXML
     private JFXComboBox<String> loginas;
         ObservableList<String> logtype = FXCollections.observableArrayList(
-                  "Admin","Receptionist","Employee"
+                  "Admin","Receptionist","Shelf Filler"
+
+
         );
     @FXML
     private AnchorPane LoginPage;
@@ -115,15 +117,16 @@ public class LoginPageController implements Initializable {
         }
                
     
+
     
-    }else {
+    }else if(Logas.equals("Shelf Filler")){
          try {
             Connection con = DBconnection.connectionDatabase();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from  admin where adminName='"+Username+"' and adminpass='"+Password+"'");
             if(rs.next())
             {
-                 Parent pane=FXMLLoader.load(getClass().getResource("ReceptionistHomePage.fxml"));
+                 Parent pane=FXMLLoader.load(getClass().getResource("Shelf_Filler.fxml"));
                LoginPage.getChildren().setAll(pane);
             }
             else
@@ -140,6 +143,7 @@ public class LoginPageController implements Initializable {
             System.out.println(e);
         }
         
+
     }
     
     
@@ -147,9 +151,7 @@ public class LoginPageController implements Initializable {
     }
     
 }
-        /*  
-    
-     */
+        
         
         
         

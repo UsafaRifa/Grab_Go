@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="1020.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="grab.go.Shelf_FillController">
+   <children>
+      <TableView fx:id="Shelf_mngTable" layoutY="-3.0" prefHeight="526.0" prefWidth="912.0">
+         <columns>
+            <TableColumn fx:id="Shelf_productID" prefWidth="94.0" text="ProductID" />
+            <TableColumn fx:id="Shelf_productName" prefWidth="163.0" text="Product Name" />
+            <TableColumn fx:id="Shelf_blockNum" prefWidth="97.0" text="Block Number" />
+            <TableColumn fx:id="Shelf_shelfNum" prefWidth="96.0" text="Shelf Number" />
+            <TableColumn fx:id="Shelf_row" prefWidth="89.0" text="Shelf Row" />
+            <TableColumn fx:id="Shelf_col" prefWidth="89.0" text="Shelf Column" />
+            <TableColumn fx:id="Shelf_addQty" prefWidth="116.0" text="Add Quantity" />
+            <TableColumn fx:id="Shelf_addSts" prefWidth="167.0" text="Add Status" />
+         </columns>
+      </TableView>
+      <JFXButton fx:id="update_status" layoutX="916.0" layoutY="77.0" onMouseClicked="#updateStatusOnAction" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #69C8FE;" text="Update Status" />
+   </children>
+</AnchorPane>

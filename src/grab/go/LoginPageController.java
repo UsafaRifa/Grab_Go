@@ -34,7 +34,7 @@ public class LoginPageController implements Initializable {
     @FXML
     private JFXComboBox<String> loginas;
         ObservableList<String> logtype = FXCollections.observableArrayList(
-                  "Admin","Receptionist"
+                  "Admin","Receptionist","Shelf Filler"
         );
     @FXML
     private AnchorPane LoginPage;
@@ -61,6 +61,10 @@ public class LoginPageController implements Initializable {
                LoginPage.getChildren().setAll(pane);
     }else if(Logas.equals("Receptionist")){
                Parent pane=FXMLLoader.load(getClass().getResource("ReceptionistHomePage.fxml"));
+               LoginPage.getChildren().setAll(pane);
+    
+    }else if(Logas.equals("Shelf Filler")){
+               Parent pane=FXMLLoader.load(getClass().getResource("Shelf_Filler.fxml"));
                LoginPage.getChildren().setAll(pane);
     
     }

@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 /**
@@ -30,7 +31,7 @@ public class Shelf_FillerController implements Initializable {
     @FXML
     private HBox AddProductHbox;
     @FXML
-    private Button P_Back;
+    private AnchorPane homePage;
 
     /**
      * Initializes the controller class.
@@ -40,14 +41,17 @@ public class Shelf_FillerController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void P_Back(ActionEvent event) {
-    }
 
     @FXML
     private void addShelfOnAction(MouseEvent event) throws IOException {
         Parent pane=FXMLLoader.load(getClass().getResource("Shelf_Fill.fxml"));
                  AddProductHbox.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+         Parent pane=FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+               homePage.getChildren().setAll(pane);
     }
     
 }

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="grab.go.Shelf_FillerController">
+<AnchorPane id="AnchorPane" fx:id="homePage" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="grab.go.Shelf_FillerController">
    <children>
       <AnchorPane prefHeight="144.0" prefWidth="1290.0" style="-fx-background-color: #2D287A;">
          <children>
@@ -26,6 +25,10 @@
       </AnchorPane>
       <JFXButton fx:id="Add_Product_toShelf" layoutX="68.0" layoutY="244.0" onMouseClicked="#addShelfOnAction" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: #69C8FE;" text="Product to Add On Shelf" />
       <HBox fx:id="AddProductHbox" layoutX="263.0" layoutY="183.0" prefHeight="526.0" prefWidth="1020.0" />
-      <Button fx:id="P_Back" layoutX="94.0" layoutY="647.0" mnemonicParsing="false" onAction="#P_Back" style="-fx-background-color: #69C8FE;" text="Back" />
+      <JFXButton layoutX="68.0" layoutY="628.0" onAction="#logout" prefHeight="34.0" prefWidth="76.0" style="-fx-background-color: #17B287;" text="Log Out" textFill="WHITE">
+         <font>
+            <Font name="Bodoni MT Condensed Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

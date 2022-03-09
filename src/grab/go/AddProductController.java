@@ -78,6 +78,7 @@ public class AddProductController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Shelf_No.setItems(ShelfAll);
+        Pro_id.setText ("P-");
         
          
         // TODO

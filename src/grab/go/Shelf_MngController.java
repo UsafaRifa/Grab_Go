@@ -69,7 +69,7 @@ public class Shelf_MngController implements Initializable {
     @FXML
     private JFXComboBox<String> search_key;
     ObservableList<String> allKey = FXCollections.observableArrayList(
-                  "ProductID","ProductName","Block","Stock_condition","Add_status"
+                  "ProductID","ProductName","Stock_condition","Add_status"
         );
     @FXML
     private JFXTextField search_txtField;

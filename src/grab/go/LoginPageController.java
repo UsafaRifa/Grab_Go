@@ -7,6 +7,7 @@ package grab.go;
 
 import DatabaseConnection.DBconnection;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +39,7 @@ public class LoginPageController implements Initializable {
     @FXML
     private JFXTextField username;
     @FXML
-    private JFXTextField password;
+    private JFXPasswordField password;
     @FXML
     private JFXComboBox<String> loginas;
         ObservableList<String> logtype = FXCollections.observableArrayList(

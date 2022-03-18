@@ -133,6 +133,7 @@ public class Shelf_FillController implements Initializable {
         dbc.connectToDB();
         for (ShelfManage pd : selectedProduct) {
             String query = "SELECT OnShelf_qty,Add_status from Shelf where ProductID='" + pd.Product_Id + "'";
+            System.out.println(query);
             dbc.queryToDB(query);
             ResultSet rs = dbc.queryToDB(query);
             while (rs.next()) {

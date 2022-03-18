@@ -60,7 +60,7 @@ public class Add_CustomerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         MembershipType.setItems(typeall);
         
-         
+        cus_id.setText("C-"); 
          NumberValidator numValidator=new NumberValidator();
         phone.getValidators().add(numValidator);
         numValidator.setMessage("add only 11 digits of your phone number");
